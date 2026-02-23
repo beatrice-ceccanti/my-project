@@ -3,20 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Il mio sito</title>
+  <title>Articoli — Tecnologia, Innovazione, Medicina</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header class="topbar">
-    <a class="brand" href="#">Il Mio Sito</a>
+    <a class="brand" href="#">Articoli</a>
 
-    <button class="menuBtn" id="menuBtn" aria-label="Apri menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-
-    <nav class="nav" id="nav">
-      <a href="#progetti">Progetti</a>
-      <a href="#competenze">Competenze</a>
+    <nav class="nav">
+      <a href="#ultimi">Ultimi</a>
+      <a href="#chi-sono">Chi sono</a>
       <a href="#contatti">Contatti</a>
     </nav>
   </header>
@@ -24,34 +20,23 @@
   <main>
     <section class="hero">
       <div class="heroCard">
-        <p class="badge">Portfolio • HTML • CSS • JavaScript</p>
-        <h1>
-          Ciao, sono <span class="accent">[Il tuo nome]</span>.
-          Creo siti semplici, chiari e veloci.
-        </h1>
+        <p class="badge">Tecnologia • Innovazione • Medicina</p>
+        <h1>Articoli argomentativi, chiari e pratici.</h1>
         <p class="subtitle">
-          Qui trovi i miei progetti, le competenze e un modo rapido per contattarmi.
+          Scrivo per capire meglio e spiegare meglio: innovazione, impatto, limiti e prospettive.
         </p>
 
-        <div class="cta">
-          <a class="btn primary" href="#progetti">Guarda i progetti</a>
-          <a class="btn" href="#contatti">Contattami</a>
+        <div class="controls">
+          <input id="search" class="input" type="search" placeholder="Cerca (titolo o testo breve)..." />
+          <select id="tag" class="select">
+            <option value="Tutti">Tutti i tag</option>
+            <option value="Tecnologia">Tecnologia</option>
+            <option value="Innovazione">Innovazione</option>
+            <option value="Medicina">Medicina</option>
+          </select>
         </div>
 
-        <div class="stats">
-          <div class="stat">
-            <div class="statNum" id="statProjects">3</div>
-            <div class="statLabel">Progetti</div>
-          </div>
-          <div class="stat">
-            <div class="statNum">100%</div>
-            <div class="statLabel">Gratis online</div>
-          </div>
-          <div class="stat">
-            <div class="statNum">⚡</div>
-            <div class="statLabel">Veloce</div>
-          </div>
-        </div>
+        <p class="hint" id="countHint"></p>
       </div>
 
       <div class="previewCard">
@@ -59,109 +44,56 @@
           <div class="dot"></div><div class="dot"></div><div class="dot"></div>
         </div>
         <div class="previewBody">
-          <p class="mono">/index.html</p>
-          <p class="line"></p>
-          <p class="line short"></p>
-          <p class="line"></p>
-          <p class="line short"></p>
-          <p class="mono mt">Deploy: Netlify ✅</p>
+          <p class="mono">Aggiornamenti</p>
+          <p class="small muted">Ogni commit su GitHub → Netlify pubblica automaticamente.</p>
+          <p class="mono mt">Sito statico ✅</p>
         </div>
       </div>
     </section>
 
-    <section class="section" id="progetti">
+    <section class="section" id="ultimi">
       <div class="sectionHead">
-        <h2>Progetti</h2>
-        <p>Una selezione di cose che ho costruito (puoi aggiornare i link).</p>
+        <h2>Ultimi articoli</h2>
+        <p>Filtra per tag o cerca per parole.</p>
       </div>
 
-      <div class="grid">
-        <article class="card">
-          <h3>Progetto 1</h3>
-          <p>Sito statico pulito e responsive.</p>
-          <div class="cardFoot">
-            <a class="link" href="#" target="_blank" rel="noreferrer">Apri</a>
-            <span class="pill">HTML/CSS</span>
-          </div>
-        </article>
-
-        <article class="card">
-          <h3>Progetto 2</h3>
-          <p>Pagina con interazioni JavaScript (menu, form).</p>
-          <div class="cardFoot">
-            <a class="link" href="#" target="_blank" rel="noreferrer">Apri</a>
-            <span class="pill">JS</span>
-          </div>
-        </article>
-
-        <article class="card">
-          <h3>Progetto 3</h3>
-          <p>Landing multilingua (idea per il futuro).</p>
-          <div class="cardFoot">
-            <a class="link" href="#" target="_blank" rel="noreferrer">Apri</a>
-            <span class="pill">UI</span>
-          </div>
-        </article>
-      </div>
+      <div class="grid" id="articlesGrid"></div>
     </section>
 
-    <section class="section" id="competenze">
+    <section class="section" id="chi-sono">
       <div class="sectionHead">
-        <h2>Competenze</h2>
-        <p>Le basi solide: struttura, stile e interattività.</p>
+        <h2>Chi sono</h2>
+        <p>Scrivi 3–4 righe su di te (puoi cambiarle quando vuoi).</p>
       </div>
 
-      <div class="skills">
-        <div class="skill">
-          <div class="skillTop">
-            <strong>HTML</strong><span>Struttura</span>
-          </div>
-          <div class="bar"><span style="width: 85%"></span></div>
-        </div>
-        <div class="skill">
-          <div class="skillTop">
-            <strong>CSS</strong><span>Layout & design</span>
-          </div>
-          <div class="bar"><span style="width: 75%"></span></div>
-        </div>
-        <div class="skill">
-          <div class="skillTop">
-            <strong>JavaScript</strong><span>Interazioni</span>
-          </div>
-          <div class="bar"><span style="width: 65%"></span></div>
-        </div>
+      <div class="card">
+        <p class="muted">
+          Ciao! Sono <strong>[Il tuo nome]</strong>. Mi interessano tecnologia, innovazione e medicina.
+          In questo spazio pubblico articoli argomentativi: tesi, ragioni, limiti, conseguenze.
+        </p>
       </div>
     </section>
 
     <section class="section" id="contatti">
       <div class="sectionHead">
         <h2>Contatti</h2>
-        <p>Scrivimi direttamente (qui facciamo un form “finto” per ora).</p>
+        <p>Per collaborazioni, feedback o proposte.</p>
       </div>
 
       <div class="contact">
-        <form class="form" id="contactForm">
-          <label>
-            Nome
-            <input type="text" name="name" placeholder="Il tuo nome" required />
-          </label>
-          <label>
-            Email
-            <input type="email" name="email" placeholder="nome@email.com" required />
-          </label>
-          <label>
-            Messaggio
-            <textarea name="message" rows="5" placeholder="Ciao! Vorrei..." required></textarea>
-          </label>
-          <button class="btn primary" type="submit">Invia</button>
-          <p class="hint" id="formHint"></p>
-        </form>
+        <div class="contactCard">
+          <h3>Scrivimi</h3>
+          <p><span class="muted">Email:</span> <a class="link" href="mailto:tuo@email.com">tuo@email.com</a></p>
+          <p class="small muted">Più avanti possiamo aggiungere un form “vero” con Netlify Forms (sempre gratis).</p>
+        </div>
 
         <div class="contactCard">
-          <h3>Info rapide</h3>
-          <p><span class="muted">Email:</span> <a class="link" href="mailto:tuo@email.com">tuo@email.com</a></p>
-          <p><span class="muted">GitHub:</span> <a class="link" href="#" target="_blank" rel="noreferrer">profilo</a></p>
-          <p class="small muted">Tip: più avanti possiamo collegare un vero invio email (senza backend) con Netlify Forms.</p>
+          <h3>Argomenti</h3>
+          <div class="tagsRow">
+            <span class="pill">Tecnologia</span>
+            <span class="pill">Innovazione</span>
+            <span class="pill">Medicina</span>
+          </div>
         </div>
       </div>
     </section>
