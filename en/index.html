@@ -1,17 +1,19 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Medicina e innovación: promesas y límites</title>
-  <link rel="stylesheet" href="../style.css" />
+  <title>Articles — Technology, Innovation, Medicine</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header class="topbar">
-    <a class="brand" href="../index.html">← Artículos</a>
+    <a class="brand" href="./">Articles</a>
+
     <nav class="nav">
-      <a href="../index.html#latest">Recientes</a>
-      <a href="../index.html#contact">Contacto</a>
+      <a href="#latest">Latest</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
     </nav>
 
     <div class="languageSwitcher">
@@ -23,59 +25,80 @@
   </header>
 
   <main>
-    <section class="section">
-      <div class="card" style="padding: 22px;">
-        <p class="badge">Medicina • Innovación</p>
-        <h1 style="margin-top: 8px;">Medicina e innovación: promesas y límites</h1>
-        <p class="muted" style="margin-top: 8px;">20 de febrero de 2026 • 7 min</p>
-
-        <hr style="border:0;border-top:1px solid rgba(255,255,255,.14);margin:18px 0;" />
-
-        <p class="muted" style="line-height:1.9;font-size:16px;">
-          <strong>Tesis:</strong> la innovación en medicina tiene un potencial extraordinario,
-          pero el entusiasmo tecnológico debe equilibrarse con rigor científico,
-          responsabilidad ética y expectativas realistas.
+    <section class="hero">
+      <div class="heroCard">
+        <p class="badge">Technology • Innovation • Medicine</p>
+        <h1>Argumentative essays, clear and practical.</h1>
+        <p class="subtitle">
+          I write about impact, tradeoffs, limits, and what actually works in the real world.
         </p>
 
-        <p class="muted" style="line-height:1.9;font-size:16px;">
-          En los últimos años, la IA, la biotecnología y el análisis de datos han transformado la salud:
-          desde diagnósticos asistidos hasta terapias más personalizadas. La promesa: atención más rápida,
-          más precisa y más accesible.
-        </p>
+        <div class="controls">
+          <input id="searchInput" class="input" type="search" placeholder="Search by title or excerpt..." />
+          <select id="tagSelect" class="select">
+            <option value="All">All tags</option>
+            <option value="Technology">Technology</option>
+            <option value="Innovation">Innovation</option>
+            <option value="Medicine">Medicine</option>
+          </select>
+        </div>
 
-        <p class="muted" style="line-height:1.9;font-size:16px;">
-          Sin embargo, capacidad técnica no equivale automáticamente a eficacia clínica.
-          Muchas soluciones rinden bien en entornos controlados, pero encuentran límites en sistemas reales,
-          complejos y variables. Además, confiar demasiado en la tecnología puede reducir la supervisión humana.
-        </p>
+        <p class="hint" id="resultsHint"></p>
+      </div>
+    </section>
 
-        <p class="muted" style="line-height:1.9;font-size:16px;">
-          La ética es igual de central: privacidad de datos, sesgos algorítmicos, desigualdad de acceso
-          y presiones comerciales pueden debilitar los objetivos del progreso médico.
-        </p>
+    <section class="section" id="latest">
+      <div class="sectionHead">
+        <h2>Latest articles</h2>
+        <p>Use search or filter by tag.</p>
+      </div>
 
-        <p class="muted" style="line-height:1.9;font-size:16px;">
-          <strong>Contraargumento:</strong> algunos sostienen que hay que innovar rápido porque el progreso médico
-          tradicional es demasiado lento. La velocidad puede acelerar el descubrimiento, pero no puede sustituir
-          la validación, la revisión científica y la seguridad a largo plazo.
-        </p>
+      <div class="grid" id="articlesGrid"></div>
+    </section>
 
-        <p class="muted" style="line-height:1.9;font-size:16px;">
-          <strong>Conclusión:</strong> el futuro de la medicina depende no solo de avances, sino de cómo se integran
-          responsablemente en los sistemas sanitarios. La innovación debe potenciar el juicio clínico, no reemplazarlo.
-        </p>
+    <section class="section" id="about">
+      <div class="sectionHead">
+        <h2>About</h2>
+        <p>Edit this section anytime.</p>
+      </div>
 
-        <p style="margin-top: 18px;">
-          <a class="link" href="../index.html">Volver al inicio</a>
+      <div class="card">
+        <p class="muted">
+          Hi! I’m <strong>[Your Name]</strong>. I publish argumentative pieces about technology,
+          innovation, and medicine—balancing curiosity with evidence and limits.
         </p>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="sectionHead">
+        <h2>Contact</h2>
+        <p>For collaborations, feedback, or proposals.</p>
+      </div>
+
+      <div class="contact">
+        <div class="contactCard">
+          <h3>Email</h3>
+          <p><span class="muted">Email:</span> <a class="link" href="mailto:your@email.com">your@email.com</a></p>
+          <p class="small muted">Later you can enable Netlify Forms for real submissions (still free).</p>
+        </div>
+
+        <div class="contactCard">
+          <h3>Topics</h3>
+          <div class="tagsRow">
+            <span class="pill">Technology</span>
+            <span class="pill">Innovation</span>
+            <span class="pill">Medicine</span>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <p>© <span id="year"></span> [Tu nombre]</p>
+    <p>© <span id="year"></span> [Your Name] • Published on Netlify</p>
   </footer>
 
-  <script src="../script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
