@@ -1,93 +1,90 @@
 document.getElementById("year").textContent = new Date().getFullYear();
 
-const grid = document.getElementById("articlesGrid");
-const searchInput = document.getElementById("search");
-const tagSelect = document.getElementById("tag");
-const countHint = document.getElementById("countHint");
+const articlesGrid = document.getElementById("articlesGrid");
+const searchInput = document.getElementById("searchInput");
+const tagSelect = document.getElementById("tagSelect");
+const resultsHint = document.getElementById("resultsHint");
 
 let allArticles = [];
 
-function formatDate(iso) {
-  // iso: YYYY-MM-DD
-  const [y, m, d] = iso.split("-").map(Number);
+function formatDate(isoDate) {
+  const [y, m, d] = isoDate.split("-").map(Number);
   const date = new Date(y, m - 1, d);
-  return date.toLocaleDateString("it-IT", { year: "numeric", month: "long", day: "numeric" });
+  return date.toLocaleDateString("en-GB", { year: "numeric", month: "long", day: "numeric" });
 }
 
-function makeCard(a) {
-  const tags = a.tags || [];
+function createArticleCard(article) {
+  const tags = Array.isArray(article.tags) ? article.tags : [];
   const tagPills = tags.map(t => `<span class="pill">${t}</span>`).join("");
 
   return `
     <article class="card">
-      <h3><a class="link" href="${a.url}">${a.title}</a></h3>
-      <p>${a.excerpt || ""}</p>
+      <h3><a class="link" href="${article.url}">${article.title}</a></h3>
+      <p>${article.excerpt || ""}</p>
       <div class="meta">
-        <span>${formatDate(a.date)}</span>
+        <span>${formatDate(article.date)}</span>
         <span>•</span>
-        <span>${a.minutes ?? 5} min</span>
+        <span>${article.minutes ?? 5} min</span>
         ${tagPills ? `<span>•</span>${tagPills}` : ""}
       </div>
     </article>
   `;
 }
 
-function render(list) {
-  if (!grid) return;
+function renderArticles(list) {
+  if (!articlesGrid) return;
 
   if (list.length === 0) {
-    grid.innerHTML = `
+    articlesGrid.innerHTML = `
       <div class="card" style="grid-column: 1 / -1;">
-        <h3>Nessun risultato</h3>
-        <p class="muted">Prova a cambiare tag o a cercare con meno parole.</p>
+        <h3>No results</h3>
+        <p class="muted">Try another tag or use fewer search words.</p>
       </div>
     `;
-    countHint.textContent = "0 articoli trovati";
+    resultsHint.textContent = "0 articles found";
     return;
   }
 
-  grid.innerHTML = list.map(makeCard).join("");
-  countHint.textContent = `${list.length} articol${list.length === 1 ? "o" : "i"} trovati`;
+  articlesGrid.innerHTML = list.map(createArticleCard).join("");
+  resultsHint.textContent = `${list.length} article${list.length === 1 ? "" : "s"} found`;
 }
 
 function applyFilters() {
-  const q = (searchInput?.value || "").trim().toLowerCase();
-  const tag = tagSelect?.value || "Tutti";
+  const query = (searchInput?.value || "").trim().toLowerCase();
+  const selectedTag = tagSelect?.value || "All";
 
-  const filtered = allArticles.filter(a => {
-    const hay = `${a.title ?? ""} ${a.excerpt ?? ""}`.toLowerCase();
-    const matchesQuery = !q || hay.includes(q);
-    const matchesTag = tag === "Tutti" || (a.tags || []).includes(tag);
-    return matchesQuery && matchesTag;
-  });
+  const filtered = allArticles
+    .filter(a => {
+      const haystack = `${a.title ?? ""} ${a.excerpt ?? ""}`.toLowerCase();
+      const matchesQuery = !query || haystack.includes(query);
+      const matchesTag = selectedTag === "All" || (Array.isArray(a.tags) && a.tags.includes(selectedTag));
+      return matchesQuery && matchesTag;
+    })
+    .sort((a, b) => (b.date || "").localeCompare(a.date || ""));
 
-  // più recenti prima
-  filtered.sort((a, b) => (b.date || "").localeCompare(a.date || ""));
-  render(filtered);
+  renderArticles(filtered);
 }
 
 async function init() {
   try {
     const res = await fetch("articles/articles.json", { cache: "no-store" });
-    if (!res.ok) throw new Error("Impossibile caricare articles.json");
+    if (!res.ok) throw new Error("Failed to load articles.json");
     allArticles = await res.json();
 
     applyFilters();
-
     searchInput?.addEventListener("input", applyFilters);
     tagSelect?.addEventListener("change", applyFilters);
   } catch (err) {
     console.error(err);
-    if (grid) {
-      grid.innerHTML = `
+    if (articlesGrid) {
+      articlesGrid.innerHTML = `
         <div class="card" style="grid-column: 1 / -1;">
-          <h3>Errore nel caricamento degli articoli</h3>
-          <p class="muted">Controlla che esista <code>articles/articles.json</code> e che sia scritto correttamente.</p>
+          <h3>Articles failed to load</h3>
+          <p class="muted">Make sure <code>articles/articles.json</code> exists and is valid JSON.</p>
         </div>
       `;
     }
   }
 }
-
 
 init();

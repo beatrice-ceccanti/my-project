@@ -1,42 +1,41 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Articoli — Tecnologia, Innovazione, Medicina</title>
+  <title>Articles — Technology, Innovation, Medicine</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header class="topbar">
-    <a class="brand" href="#">Articoli</a>
-
+    <a class="brand" href="./">Articles</a>
     <nav class="nav">
-      <a href="#ultimi">Ultimi</a>
-      <a href="#chi-sono">Chi sono</a>
-      <a href="#contatti">Contatti</a>
+      <a href="#latest">Latest</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
     </nav>
   </header>
 
   <main>
     <section class="hero">
       <div class="heroCard">
-        <p class="badge">Tecnologia • Innovazione • Medicina</p>
-        <h1>Articoli argomentativi, chiari e pratici.</h1>
+        <p class="badge">Technology • Innovation • Medicine</p>
+        <h1>Argumentative essays, clear and practical.</h1>
         <p class="subtitle">
-          Scrivo per capire meglio e spiegare meglio: innovazione, impatto, limiti e prospettive.
+          I write about impact, tradeoffs, limits, and what actually works in the real world.
         </p>
 
         <div class="controls">
-          <input id="search" class="input" type="search" placeholder="Cerca (titolo o testo breve)..." />
-          <select id="tag" class="select">
-            <option value="Tutti">Tutti i tag</option>
-            <option value="Tecnologia">Tecnologia</option>
-            <option value="Innovazione">Innovazione</option>
-            <option value="Medicina">Medicina</option>
+          <input id="searchInput" class="input" type="search" placeholder="Search by title or excerpt..." />
+          <select id="tagSelect" class="select">
+            <option value="All">All tags</option>
+            <option value="Technology">Technology</option>
+            <option value="Innovation">Innovation</option>
+            <option value="Medicine">Medicine</option>
           </select>
         </div>
 
-        <p class="hint" id="countHint"></p>
+        <p class="hint" id="resultsHint"></p>
       </div>
 
       <div class="previewCard">
@@ -44,55 +43,55 @@
           <div class="dot"></div><div class="dot"></div><div class="dot"></div>
         </div>
         <div class="previewBody">
-          <p class="mono">Aggiornamenti</p>
-          <p class="small muted">Ogni commit su GitHub → Netlify pubblica automaticamente.</p>
-          <p class="mono mt">Sito statico ✅</p>
+          <p class="mono">Workflow</p>
+          <p class="small muted">Commit to GitHub → Netlify deploys automatically.</p>
+          <p class="mono mt">Static site ✅</p>
         </div>
       </div>
     </section>
 
-    <section class="section" id="ultimi">
+    <section class="section" id="latest">
       <div class="sectionHead">
-        <h2>Ultimi articoli</h2>
-        <p>Filtra per tag o cerca per parole.</p>
+        <h2>Latest articles</h2>
+        <p>Use search or filter by tag.</p>
       </div>
 
       <div class="grid" id="articlesGrid"></div>
     </section>
 
-    <section class="section" id="chi-sono">
+    <section class="section" id="about">
       <div class="sectionHead">
-        <h2>Chi sono</h2>
-        <p>Scrivi 3–4 righe su di te (puoi cambiarle quando vuoi).</p>
+        <h2>About</h2>
+        <p>Edit this section anytime.</p>
       </div>
 
       <div class="card">
         <p class="muted">
-          Ciao! Sono <strong>[Il tuo nome]</strong>. Mi interessano tecnologia, innovazione e medicina.
-          In questo spazio pubblico articoli argomentativi: tesi, ragioni, limiti, conseguenze.
+          Hi! I’m <strong>[Your Name]</strong>. I write argumentative articles about technology,
+          innovation, and medicine—balancing curiosity with evidence and limits.
         </p>
       </div>
     </section>
 
-    <section class="section" id="contatti">
+    <section class="section" id="contact">
       <div class="sectionHead">
-        <h2>Contatti</h2>
-        <p>Per collaborazioni, feedback o proposte.</p>
+        <h2>Contact</h2>
+        <p>For collaborations, feedback, or proposals.</p>
       </div>
 
       <div class="contact">
         <div class="contactCard">
-          <h3>Scrivimi</h3>
-          <p><span class="muted">Email:</span> <a class="link" href="mailto:tuo@email.com">tuo@email.com</a></p>
-          <p class="small muted">Più avanti possiamo aggiungere un form “vero” con Netlify Forms (sempre gratis).</p>
+          <h3>Email</h3>
+          <p><span class="muted">Email:</span> <a class="link" href="mailto:your@email.com">your@email.com</a></p>
+          <p class="small muted">Later you can enable Netlify Forms for real submissions (still free).</p>
         </div>
 
         <div class="contactCard">
-          <h3>Argomenti</h3>
+          <h3>Topics</h3>
           <div class="tagsRow">
-            <span class="pill">Tecnologia</span>
-            <span class="pill">Innovazione</span>
-            <span class="pill">Medicina</span>
+            <span class="pill">Technology</span>
+            <span class="pill">Innovation</span>
+            <span class="pill">Medicine</span>
           </div>
         </div>
       </div>
@@ -100,7 +99,7 @@
   </main>
 
   <footer class="footer">
-    <p>© <span id="year"></span> [Il tuo nome] • Pubblicato su Netlify</p>
+    <p>© <span id="year"></span> [Your Name] • Published on Netlify</p>
   </footer>
 
   <script src="script.js"></script>
