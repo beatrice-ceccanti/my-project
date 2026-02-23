@@ -3,95 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Articles — Technology, Innovation, Medicine</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Redirecting...</title>
 </head>
 <body>
-  <header class="topbar">
-    <a class="brand" href="./">Articles</a>
-    <nav class="nav">
-      <a href="#latest">Latest</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+  <script>
+    const SUPPORTED_LANGUAGES = ["en", "it", "de", "es"];
+    const saved = localStorage.getItem("site_language");
+    const browser = (navigator.language || "en").slice(0, 2).toLowerCase();
 
-  <main>
-    <section class="hero">
-      <div class="heroCard">
-        <p class="badge">Technology • Innovation • Medicine</p>
-        <h1>Argumentative essays, clear and practical.</h1>
-        <p class="subtitle">
-          I write about impact, tradeoffs, limits, and what actually works in the real world.
-        </p>
+    const lang =
+      SUPPORTED_LANGUAGES.includes(saved) ? saved :
+      SUPPORTED_LANGUAGES.includes(browser) ? browser :
+      "en";
 
-        <div class="controls">
-          <input id="searchInput" class="input" type="search" placeholder="Search by title or excerpt..." />
-          <select id="tagSelect" class="select">
-            <option value="All">All tags</option>
-            <option value="Technology">Technology</option>
-            <option value="Innovation">Innovation</option>
-            <option value="Medicine">Medicine</option>
-          </select>
-        </div>
-
-        <p class="hint" id="resultsHint"></p>
-      </div>
-    </section>
-
-    <section class="section" id="latest">
-      <div class="sectionHead">
-        <h2>Latest articles</h2>
-        <p>Use search or filter by tag.</p>
-      </div>
-
-      <div class="grid" id="articlesGrid"></div>
-    </section>
-
-    <section class="section" id="about">
-      <div class="sectionHead">
-        <h2>About</h2>
-        <p>Edit this section anytime.</p>
-      </div>
-
-      <div class="card">
-        <p class="muted">
-          Hi! I’m <strong>[Your Name]</strong>. I write argumentative articles about technology,
-          innovation, and medicine—balancing curiosity with evidence and limits.
-        </p>
-      </div>
-    </section>
-
-    <section class="section" id="contact">
-      <div class="sectionHead">
-        <h2>Contact</h2>
-        <p>For collaborations, feedback, or proposals.</p>
-      </div>
-
-      <div class="contact">
-        <div class="contactCard">
-          <h3>Email</h3>
-          <p><span class="muted">Email:</span> <a class="link" href="mailto:your@email.com">your@email.com</a></p>
-          <p class="small muted">Later you can enable Netlify Forms for real submissions (still free).</p>
-        </div>
-
-        <div class="contactCard">
-          <h3>Topics</h3>
-          <div class="tagsRow">
-            <span class="pill">Technology</span>
-            <span class="pill">Innovation</span>
-            <span class="pill">Medicine</span>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <p>© <span id="year"></span> [Your Name] • Published on Netlify</p>
-  </footer>
-
-  <script src="script.js"></script>
+    window.location.replace(`/${lang}/`);
+  </script>
 </body>
-
 </html>

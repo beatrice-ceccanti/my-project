@@ -1,0 +1,18 @@
+[
+  {
+    "title": "Mi primer artículo",
+    "date": "2026-02-23",
+    "tags": ["Tecnología", "Innovación"],
+    "excerpt": "Un texto argumentativo sobre cómo la tecnología cambia nuestra forma de aprender y trabajar.",
+    "url": "articles/first-article.html",
+    "minutes": 5
+  },
+  {
+    "title": "Medicina e innovación: promesas y límites",
+    "date": "2026-02-20",
+    "tags": ["Medicina", "Innovación"],
+    "excerpt": "Qué puede lograr realmente la innovación en salud y por qué importan la cautela y el método.",
+    "url": "articles/medicine-innovation.html",
+    "minutes": 7
+  }
+]
