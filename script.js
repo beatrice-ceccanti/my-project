@@ -68,8 +68,8 @@ function applyFilters() {
 
 async function init() {
   try {
-    const res = await fetch("articoli/articoli.json", { cache: "no-store" });
-    if (!res.ok) throw new Error("Impossibile caricare articoli.json");
+    const res = await fetch("articles/articles.json", { cache: "no-store" });
+    if (!res.ok) throw new Error("Impossibile caricare articles.json");
     allArticles = await res.json();
 
     applyFilters();
@@ -82,11 +82,12 @@ async function init() {
       grid.innerHTML = `
         <div class="card" style="grid-column: 1 / -1;">
           <h3>Errore nel caricamento degli articoli</h3>
-          <p class="muted">Controlla che esista <code>articoli/articoli.json</code> e che sia scritto correttamente.</p>
+          <p class="muted">Controlla che esista <code>articles/articles.json</code> e che sia scritto correttamente.</p>
         </div>
       `;
     }
   }
 }
+
 
 init();
