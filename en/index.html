@@ -4,9 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Articles — Technology, Innovation, Medicine</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="../style.css" />
 </head>
 <body>
+
   <header class="topbar">
     <a class="brand" href="./">Articles</a>
 
@@ -25,16 +26,25 @@
   </header>
 
   <main>
+
     <section class="hero">
       <div class="heroCard">
         <p class="badge">Technology • Innovation • Medicine</p>
+
         <h1>Argumentative essays, clear and practical.</h1>
+
         <p class="subtitle">
           I write about impact, tradeoffs, limits, and what actually works in the real world.
         </p>
 
         <div class="controls">
-          <input id="searchInput" class="input" type="search" placeholder="Search by title or excerpt..." />
+          <input
+            id="searchInput"
+            class="input"
+            type="search"
+            placeholder="Search by title or excerpt..."
+          />
+
           <select id="tagSelect" class="select">
             <option value="All">All tags</option>
             <option value="Technology">Technology</option>
@@ -76,29 +86,20 @@
         <p>For collaborations, feedback, or proposals.</p>
       </div>
 
-      <div class="contact">
-        <div class="contactCard">
-          <h3>Email</h3>
-          <p><span class="muted">Email:</span> <a class="link" href="mailto:your@email.com">your@email.com</a></p>
-          <p class="small muted">Later you can enable Netlify Forms for real submissions (still free).</p>
-        </div>
-
-        <div class="contactCard">
-          <h3>Topics</h3>
-          <div class="tagsRow">
-            <span class="pill">Technology</span>
-            <span class="pill">Innovation</span>
-            <span class="pill">Medicine</span>
-          </div>
-        </div>
+      <div class="card">
+        <p>
+          <strong>Email:</strong>
+          <a class="link" href="mailto:your@email.com">your@email.com</a>
+        </p>
       </div>
     </section>
+
   </main>
 
   <footer class="footer">
     <p>© <span id="year"></span> [Your Name] • Published on Netlify</p>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="../script.js"></script>
 </body>
 </html>
