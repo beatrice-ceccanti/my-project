@@ -46,61 +46,82 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 /* =========================================
-   ARTICLES LOADER (if present on page)
+   ARTICLES LOADER (GitHub Pages safe + i18n)
 ========================================= */
 document.addEventListener("DOMContentLoaded", () => {
   const grid = document.getElementById("articlesGrid");
   if (!grid) return;
 
+  // Detect language from URL: /my-project/<lang>/...
+  const SUPPORTED = ["en", "it", "de", "es"];
+  const parts = window.location.pathname.split("/").filter(Boolean);
+  const lang = SUPPORTED.includes(parts[1]) ? parts[1] : "en";
+
+  const I18N = {
+    it: { read: "Leggi →", noResults: "Nessun articolo trovato.", results: "risultati" },
+    en: { read: "Read →",  noResults: "No articles found.",        results: "results"  },
+    de: { read: "Lesen →", noResults: "Keine Artikel gefunden.",   results: "Ergebnisse" },
+    es: { read: "Leer →",  noResults: "No se encontraron artículos.", results: "resultados" }
+  };
+
+  const t = I18N[lang] || I18N.en;
+
   const searchInput = document.getElementById("searchInput");
   const tagSelect = document.getElementById("tagSelect");
   const resultsHint = document.getElementById("resultsHint");
 
-  fetch("articles/articles.json")
-    .then(res => res.json())
-    .then(articles => {
+  // Always resolve relative to the CURRENT page (works for /it/ and /it/index.html)
+  const jsonUrl = new URL("articles/articles.json", window.location.href);
 
+  fetch(jsonUrl)
+    .then((res) => {
+      if (!res.ok) throw new Error(`HTTP ${res.status} loading ${jsonUrl}`);
+      return res.json();
+    })
+    .then((articles) => {
       function render(filtered) {
         grid.innerHTML = "";
 
         if (!filtered.length) {
-          grid.innerHTML = "<p class='muted'>Nessun articolo trovato.</p>";
+          grid.innerHTML = `<p class="muted">${t.noResults}</p>`;
+          if (resultsHint) resultsHint.textContent = `0 ${t.results}`;
           return;
         }
 
-        filtered.forEach(article => {
+        filtered.forEach((article) => {
           const card = document.createElement("div");
           card.className = "card";
+
+          const articleHref = new URL(`articles/${article.slug}.html`, window.location.href);
 
           card.innerHTML = `
             <h3>${article.title}</h3>
             <p class="muted">${article.description}</p>
             <div class="tagsRow">
-              ${article.tags.map(tag => `<span class="pill">${tag}</span>`).join("")}
+              ${(article.tags || []).map(tag => `<span class="pill">${tag}</span>`).join("")}
             </div>
-            <a class="link" href="articles/${article.slug}.html">Leggi →</a>
+            <a class="link" href="${articleHref.pathname}${articleHref.search}${articleHref.hash}">${t.read}</a>
           `;
 
           grid.appendChild(card);
         });
 
         if (resultsHint) {
-          resultsHint.textContent = `${filtered.length} risultati`;
+          resultsHint.textContent = `${filtered.length} ${t.results}`;
         }
       }
 
       function filter() {
-        const query = searchInput ? searchInput.value.toLowerCase() : "";
-        const selectedTag = tagSelect ? tagSelect.value : "All";
+        const query = (searchInput?.value || "").toLowerCase();
+        const selectedTag = tagSelect?.value || "All";
 
-        const filtered = articles.filter(article => {
-          const matchesQuery =
-            article.title.toLowerCase().includes(query) ||
-            article.description.toLowerCase().includes(query);
+        const filtered = articles.filter((article) => {
+          const title = (article.title || "").toLowerCase();
+          const desc = (article.description || "").toLowerCase();
+          const tags = Array.isArray(article.tags) ? article.tags : [];
 
-          const matchesTag =
-            selectedTag === "All" ||
-            article.tags.includes(selectedTag);
+          const matchesQuery = title.includes(query) || desc.includes(query);
+          const matchesTag = selectedTag === "All" || tags.includes(selectedTag);
 
           return matchesQuery && matchesTag;
         });
@@ -108,12 +129,13 @@ document.addEventListener("DOMContentLoaded", () => {
         render(filtered);
       }
 
-      if (searchInput) searchInput.addEventListener("input", filter);
-      if (tagSelect) tagSelect.addEventListener("change", filter);
+      searchInput?.addEventListener("input", filter);
+      tagSelect?.addEventListener("change", filter);
 
       render(articles);
     })
-    .catch(err => {
+    .catch((err) => {
       console.error("Errore caricamento articoli:", err);
+      grid.innerHTML = `<p class="muted">Error loading articles.</p>`;
     });
 });
