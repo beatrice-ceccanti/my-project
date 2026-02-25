@@ -10,38 +10,63 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 /* =========================================
-   LANGUAGE SWITCHER (GitHub Pages safe)
+   LANGUAGE SWITCHER (keeps same page)
    Works for:
-   /my-project/en/
-   /my-project/en/articles/...
+   /my-project/<lang>/
+   /my-project/<lang>/articles/...
 ========================================= */
 (function () {
+  const SUPPORTED = ["en", "it", "de", "es"];
   const links = document.querySelectorAll(".languageLink[data-language]");
   if (!links.length) return;
 
-  const SUPPORTED = ["en", "it", "de", "es"];
-
-  // pathname examples:
-  // /my-project/de/
-  // /my-project/de/articles/first-article.html
   const parts = window.location.pathname.split("/").filter(Boolean);
 
-  // parts[0] = project name (my-project)
   const project = parts[0] || "";
   const base = project ? `/${project}/` : "/";
 
+  const currentLang = parts[1] || "en";
+  const remainder = parts.slice(2);
+  const hasLang = SUPPORTED.includes(currentLang);
+
   links.forEach(link => {
     const lang = link.getAttribute("data-language");
-
     if (!SUPPORTED.includes(lang)) return;
 
-    // Always redirect to language home
-    link.href = base + lang + "/";
+    const targetPath = hasLang
+      ? base + lang + (remainder.length ? "/" + remainder.join("/") : "/")
+      : base + lang + "/";
+
+    const targetUrl = new URL(targetPath, window.location.origin);
+    targetUrl.search = window.location.search;
+    targetUrl.hash = window.location.hash;
+
+    link.href = targetUrl.toString();
 
     link.addEventListener("click", () => {
       localStorage.setItem("site_language", lang);
     });
   });
+})();
+
+
+/* =========================================
+   BRAND LINK FIX (always go to lang home)
+========================================= */
+(function () {
+  const brand = document.querySelector(".brand");
+  if (!brand) return;
+
+  const SUPPORTED = ["en", "it", "de", "es"];
+  const parts = window.location.pathname.split("/").filter(Boolean);
+
+  const project = parts[0] || "";
+  const base = project ? `/${project}/` : "/";
+
+  const currentLang = parts[1] || "en";
+  const lang = SUPPORTED.includes(currentLang) ? currentLang : "en";
+
+  brand.href = base + lang + "/";
 })();
 
 
@@ -52,16 +77,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const grid = document.getElementById("articlesGrid");
   if (!grid) return;
 
-  // Detect language from URL: /my-project/<lang>/...
   const SUPPORTED = ["en", "it", "de", "es"];
   const parts = window.location.pathname.split("/").filter(Boolean);
   const lang = SUPPORTED.includes(parts[1]) ? parts[1] : "en";
 
   const I18N = {
     it: { read: "Leggi →", noResults: "Nessun articolo trovato.", results: "risultati" },
-    en: { read: "Read →",  noResults: "No articles found.",        results: "results"  },
-    de: { read: "Lesen →", noResults: "Keine Artikel gefunden.",   results: "Ergebnisse" },
-    es: { read: "Leer →",  noResults: "No se encontraron artículos.", results: "resultados" }
+    en: { read: "Read →", noResults: "No articles found.", results: "results" },
+    de: { read: "Lesen →", noResults: "Keine Artikel gefunden.", results: "Ergebnisse" },
+    es: { read: "Leer →", noResults: "No se encontraron artículos.", results: "resultados" }
   };
 
   const t = I18N[lang] || I18N.en;
@@ -70,15 +94,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const tagSelect = document.getElementById("tagSelect");
   const resultsHint = document.getElementById("resultsHint");
 
-  // Always resolve relative to the CURRENT page (works for /it/ and /it/index.html)
   const jsonUrl = new URL("articles/articles.json", window.location.href);
 
   fetch(jsonUrl)
-    .then((res) => {
-      if (!res.ok) throw new Error(`HTTP ${res.status} loading ${jsonUrl}`);
+    .then(res => {
+      if (!res.ok) throw new Error("Failed to load articles.json");
       return res.json();
     })
-    .then((articles) => {
+    .then(articles => {
+
       function render(filtered) {
         grid.innerHTML = "";
 
@@ -88,30 +112,25 @@ document.addEventListener("DOMContentLoaded", () => {
           return;
         }
 
-        filtered.forEach((article) => {
+        filtered.forEach(article => {
+
+          const title = article.title || "";
+          const excerpt = article.excerpt || "";
+          const tags = Array.isArray(article.tags) ? article.tags : [];
+          const url = article.url || "";
+
+          if (!url) return;
+
+          const articleHref = new URL(url, window.location.href);
+
           const card = document.createElement("div");
           card.className = "card";
 
-          const file =
-              article.slug ? `${article.slug}.html` :
-              article.file ? article.file :
-              article.href ? article.href :
-              article.url ? article.url :
-              article.path ? article.path :
-              null;
-            
-            if (!file) {
-              console.warn("Articolo senza slug/file:", article);
-              return; // salta la card invece di creare link rotto
-            }
-            
-            const articleHref = new URL(`articles/${file}`, window.location.href);
-
           card.innerHTML = `
-            <h3>${article.title}</h3>
-            <p class="muted">${article.description}</p>
+            <h3>${title}</h3>
+            <p class="muted">${excerpt}</p>
             <div class="tagsRow">
-              ${(article.tags || []).map(tag => `<span class="pill">${tag}</span>`).join("")}
+              ${tags.map(tag => `<span class="pill">${tag}</span>`).join("")}
             </div>
             <a class="link" href="${articleHref.pathname}">${t.read}</a>
           `;
@@ -128,12 +147,12 @@ document.addEventListener("DOMContentLoaded", () => {
         const query = (searchInput?.value || "").toLowerCase();
         const selectedTag = tagSelect?.value || "All";
 
-        const filtered = articles.filter((article) => {
+        const filtered = articles.filter(article => {
           const title = (article.title || "").toLowerCase();
-          const desc = (article.description || "").toLowerCase();
+          const excerpt = (article.excerpt || "").toLowerCase();
           const tags = Array.isArray(article.tags) ? article.tags : [];
 
-          const matchesQuery = title.includes(query) || desc.includes(query);
+          const matchesQuery = title.includes(query) || excerpt.includes(query);
           const matchesTag = selectedTag === "All" || tags.includes(selectedTag);
 
           return matchesQuery && matchesTag;
@@ -147,9 +166,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
       render(articles);
     })
-    .catch((err) => {
+    .catch(err => {
       console.error("Errore caricamento articoli:", err);
       grid.innerHTML = `<p class="muted">Error loading articles.</p>`;
     });
 });
-
