@@ -92,7 +92,20 @@ document.addEventListener("DOMContentLoaded", () => {
           const card = document.createElement("div");
           card.className = "card";
 
-          const articleHref = new URL(`articles/${article.slug}.html`, window.location.href);
+          const file =
+              article.slug ? `${article.slug}.html` :
+              article.file ? article.file :
+              article.href ? article.href :
+              article.url ? article.url :
+              article.path ? article.path :
+              null;
+            
+            if (!file) {
+              console.warn("Articolo senza slug/file:", article);
+              return; // salta la card invece di creare link rotto
+            }
+            
+            const articleHref = new URL(`articles/${file}`, window.location.href);
 
           card.innerHTML = `
             <h3>${article.title}</h3>
@@ -100,7 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="tagsRow">
               ${(article.tags || []).map(tag => `<span class="pill">${tag}</span>`).join("")}
             </div>
-            <a class="link" href="${articleHref.pathname}${articleHref.search}${articleHref.hash}">${t.read}</a>
+            <a class="link" href="${articleHref.pathname}">${t.read}</a>
           `;
 
           grid.appendChild(card);
@@ -139,3 +152,4 @@ document.addEventListener("DOMContentLoaded", () => {
       grid.innerHTML = `<p class="muted">Error loading articles.</p>`;
     });
 });
+
