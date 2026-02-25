@@ -85,4 +85,28 @@ async function init(){
   }
 }
 
+
 init();
+// Language switcher for GitHub Pages project sites (e.g. /my-project/)
+(function () {
+  const links = document.querySelectorAll(".languageLink[data-language]");
+  if (!links.length) return;
+
+  // pathname examples:
+  // /my-project/de/...
+  // /my-project/de/articles/first-article.html
+  const parts = window.location.pathname.split("/").filter(Boolean);
+
+  // project = "my-project"
+  const project = parts[0] || "";
+  const base = project ? `/${project}/` : "/";
+
+  links.forEach((a) => {
+    const lang = a.getAttribute("data-language");
+    a.href = base + lang + "/";
+
+    a.addEventListener("click", () => {
+      localStorage.setItem("site_language", lang);
+    });
+  });
+})();
