@@ -11,9 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /* =========================================
    LANGUAGE SWITCHER (keeps same page)
-   Works for:
-   /my-project/<lang>/
-   /my-project/<lang>/articles/...
 ========================================= */
 (function () {
   const SUPPORTED = ["en", "it", "de", "es"];
@@ -37,11 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ? base + lang + (remainder.length ? "/" + remainder.join("/") : "/")
       : base + lang + "/";
 
-    const targetUrl = new URL(targetPath, window.location.origin);
-    targetUrl.search = window.location.search;
-    targetUrl.hash = window.location.hash;
-
-    link.href = targetUrl.toString();
+    link.href = targetPath;
 
     link.addEventListener("click", () => {
       localStorage.setItem("site_language", lang);
@@ -51,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 /* =========================================
-   BRAND LINK FIX (always go to lang home)
+   BRAND LINK FIX (go to language home)
 ========================================= */
 (function () {
   const brand = document.querySelector(".brand");
@@ -71,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 /* =========================================
-   ARTICLES LOADER (GitHub Pages safe + i18n)
+   ARTICLES LOADER (GitHub Pages safe)
 ========================================= */
 document.addEventListener("DOMContentLoaded", () => {
   const grid = document.getElementById("articlesGrid");
@@ -94,9 +87,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const tagSelect = document.getElementById("tagSelect");
   const resultsHint = document.getElementById("resultsHint");
 
-  const jsonUrl = new URL("articles.json", window.location.href);
-
-  fetch(jsonUrl)
+  // JSON si trova sempre in /<lang>/articles/articles.json
+  fetch("articles/articles.json")
     .then(res => {
       if (!res.ok) throw new Error("Failed to load articles.json");
       return res.json();
@@ -117,11 +109,9 @@ document.addEventListener("DOMContentLoaded", () => {
           const title = article.title || "";
           const excerpt = article.excerpt || "";
           const tags = Array.isArray(article.tags) ? article.tags : [];
-          const url = article.url || "";
+          const url = article.url || ""; // es: "articles/first-article.html"
 
           if (!url) return;
-
-          const articleHref = new URL(url, window.location.href);
 
           const card = document.createElement("div");
           card.className = "card";
@@ -132,7 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="tagsRow">
               ${tags.map(tag => `<span class="pill">${tag}</span>`).join("")}
             </div>
-            <a class="link" href="${articleHref.pathname}">${t.read}</a>
+            <a class="link" href="${url}">${t.read}</a>
           `;
 
           grid.appendChild(card);
@@ -171,4 +161,3 @@ document.addEventListener("DOMContentLoaded", () => {
       grid.innerHTML = `<p class="muted">Error loading articles.</p>`;
     });
 });
-
