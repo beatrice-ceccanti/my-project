@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const tagSelect = document.getElementById("tagSelect");
   const resultsHint = document.getElementById("resultsHint");
 
-  const jsonUrl = new URL("articles/articles.json", window.location.href);
+  const jsonUrl = new URL("articles.json", window.location.href);
 
   fetch(jsonUrl)
     .then(res => {
@@ -171,3 +171,4 @@ document.addEventListener("DOMContentLoaded", () => {
       grid.innerHTML = `<p class="muted">Error loading articles.</p>`;
     });
 });
+
