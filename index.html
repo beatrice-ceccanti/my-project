@@ -4,56 +4,26 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Redirecting...</title>
-
-  <!-- Piccolo fallback se JS è disabilitato -->
-  <noscript>
-    <meta http-equiv="refresh" content="0; url=./en/" />
-  </noscript>
-
-  <style>
-    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; padding: 24px; }
-    .muted { opacity: 0.75; }
-    a { color: inherit; }
-  </style>
 </head>
 <body>
-  <p class="muted">Redirecting to the right language…</p>
-
   <script>
-    (function () {
-      const SUPPORTED = ["en", "it", "de", "es"];
+    const SUPPORTED = ["en", "it", "de", "es"];
 
-      const saved = (localStorage.getItem("site_language") || "").toLowerCase();
-      const browser = ((navigator.language || "en").slice(0, 2) || "en").toLowerCase();
+    const saved = localStorage.getItem("site_language");
+    const browser = (navigator.language || "en").slice(0, 2).toLowerCase();
 
-      const lang = SUPPORTED.includes(saved)
-        ? saved
-        : SUPPORTED.includes(browser)
-          ? browser
-          : "en";
+    const lang =
+      SUPPORTED.includes(saved) ? saved :
+      SUPPORTED.includes(browser) ? browser :
+      "en";
 
-      // Calcola la base corretta anche su GitHub Pages project site (/my-project/)
-      // Esempio: https://beatrice-ceccanti.github.io/my-project/  -> base = /my-project/
-      const path = window.location.pathname;
-      const base = path.endsWith("/") ? path : path.substring(0, path.lastIndexOf("/") + 1);
+    // 🔥 QUESTO è il punto chiave:
+    // prende la cartella corrente (/my-project/)
+    // e ci aggiunge la lingua
+    const basePath = window.location.pathname.replace(/index\.html$/, "");
+    const cleanBase = basePath.endsWith("/") ? basePath : basePath + "/";
 
-      // Evita redirect loop se sei già dentro /en/ /it/ ecc.
-      const alreadyInLang = SUPPORTED.some(l => base.endsWith("/" + l + "/"));
-      if (alreadyInLang) return;
-
-      // Redirect relativo alla base corrente (quindi resta dentro /my-project/)
-      const target = new URL(base + lang + "/", window.location.origin);
-
-      window.location.replace(target.href);
-    })();
+    window.location.replace(cleanBase + lang + "/");
   </script>
-
-  <p class="muted">
-    If you are not redirected, open:
-    <a href="./en/">English</a> ·
-    <a href="./it/">Italiano</a> ·
-    <a href="./de/">Deutsch</a> ·
-    <a href="./es/">Español</a>
-  </p>
 </body>
 </html>
