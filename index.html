@@ -4,26 +4,52 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Redirecting...</title>
+
+  <!-- Fallback se JS è disabilitato -->
+  <noscript>
+    <meta http-equiv="refresh" content="0; url=./en/" />
+  </noscript>
+
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; padding: 24px; }
+    .muted { opacity: 0.75; }
+    a { color: inherit; }
+  </style>
 </head>
 <body>
+  <p class="muted">Redirecting to your language…</p>
+
   <script>
-    const SUPPORTED = ["en", "it", "de", "es"];
+    (function () {
+      const SUPPORTED = ["en", "it", "de", "es"];
 
-    const saved = localStorage.getItem("site_language");
-    const browser = (navigator.language || "en").slice(0, 2).toLowerCase();
+      const saved = (localStorage.getItem("site_language") || "").toLowerCase();
+      const browser = ((navigator.language || "en").slice(0, 2) || "en").toLowerCase();
 
-    const lang =
-      SUPPORTED.includes(saved) ? saved :
-      SUPPORTED.includes(browser) ? browser :
-      "en";
+      const lang =
+        SUPPORTED.includes(saved) ? saved :
+        SUPPORTED.includes(browser) ? browser :
+        "en";
 
-    // 🔥 QUESTO è il punto chiave:
-    // prende la cartella corrente (/my-project/)
-    // e ci aggiunge la lingua
-    const basePath = window.location.pathname.replace(/index\.html$/, "");
-    const cleanBase = basePath.endsWith("/") ? basePath : basePath + "/";
+      // Calcola la base del project site in modo robusto:
+      // - se sei su /my-project/ o /my-project/index.html -> base = /my-project/
+      // - se sei su / (in locale) -> base = /
+      const path = window.location.pathname;
+      const base = path.endsWith("/")
+        ? path
+        : path.substring(0, path.lastIndexOf("/") + 1);
 
-    window.location.replace(cleanBase + lang + "/");
+      // Redirect relativo alla base corrente (rimane sempre dentro /my-project/)
+      window.location.replace(base + lang + "/");
+    })();
   </script>
+
+  <p class="muted">
+    If you are not redirected:
+    <a href="./en/">EN</a> ·
+    <a href="./it/">IT</a> ·
+    <a href="./de/">DE</a> ·
+    <a href="./es/">ES</a>
+  </p>
 </body>
 </html>
