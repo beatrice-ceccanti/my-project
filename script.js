@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
    LANGUAGE SWITCHER (keeps same page)
 ========================================= */
 (function () {
-  const SUPPORTED = ["en", "it", "de", "es"];
+  const SUPPORTED = ["en", "it", "de", "fr"];
   const links = document.querySelectorAll(".languageLink[data-language]");
   if (!links.length) return;
 
@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const brand = document.querySelector(".brand");
   if (!brand) return;
 
-  const SUPPORTED = ["en", "it", "de", "es"];
+  const SUPPORTED = ["en", "it", "de", "fr"];
   const parts = window.location.pathname.split("/").filter(Boolean);
 
   const project = parts[0] || "";
@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
     it: { read: "Leggi →", noResults: "Nessun articolo trovato.", results: "risultati" },
     en: { read: "Read →", noResults: "No articles found.", results: "results" },
     de: { read: "Lesen →", noResults: "Keine Artikel gefunden.", results: "Ergebnisse" },
-    es: { read: "Leer →", noResults: "No se encontraron artículos.", results: "resultados" }
+    fr: { read: "Lire →", noResults: "Aucun article trouvé.", results: "résultats" }
   };
 
   const t = I18N[lang] || I18N.en;
@@ -161,3 +161,4 @@ document.addEventListener("DOMContentLoaded", () => {
       grid.innerHTML = `<p class="muted">Error loading articles.</p>`;
     });
 });
+
