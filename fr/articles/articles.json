@@ -1,17 +1,17 @@
 [
   {
-    "title": "Mi primer artículo",
+    "title": "Mon premier article",
     "date": "2026-02-23",
-    "tags": ["Tecnología", "Innovación"],
-    "excerpt": "Un texto argumentativo sobre cómo la tecnología cambia nuestra forma de aprender y trabajar.",
+    "tags": ["Technologie", "Innovation"],
+    "excerpt": "Un texte argumentatif sur la manière dont la technologie transforme notre façon d’apprendre et de travailler.",
     "url": "articles/first-article.html",
     "minutes": 5
   },
   {
-    "title": "Medicina e innovación: promesas y límites",
+    "title": "Médecine et innovation : promesses et limites",
     "date": "2026-02-20",
-    "tags": ["Medicina", "Innovación"],
-    "excerpt": "Qué puede lograr realmente la innovación en salud y por qué importan la cautela y el método.",
+    "tags": ["Médecine", "Innovation"],
+    "excerpt": "Ce que l’innovation peut réellement accomplir dans le domaine de la santé et pourquoi la prudence et la méthode sont essentielles.",
     "url": "articles/medicine-innovation.html",
     "minutes": 7
   }
