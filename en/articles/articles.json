@@ -2,7 +2,7 @@
   {
     "title": "My First Article",
     "date": "2026-02-23",
-    "tags": ["Technology", "Innovation"],
+    "tags": ["Personal"],
     "excerpt": "An argumentative piece on how technology changes how we learn and work.",
     "url": "articles/first-article.html",
     "minutes": 5
@@ -10,9 +10,10 @@
   {
     "title": "Medicine and Innovation: Promises and Limits",
     "date": "2026-02-20",
-    "tags": ["Medicine", "Innovation"],
+    "tags": ["Personal"],
     "excerpt": "What innovation can realistically do for healthcare—and where caution and method matter.",
     "url": "articles/medicine-innovation.html",
     "minutes": 7
   }
+
 ]
