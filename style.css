@@ -1,5 +1,4 @@
 :root{
-  /* Palette */
   --bg: #070A12;
   --bg2: #0B1020;
 
@@ -12,9 +11,8 @@
   --stroke: rgba(255,255,255,.12);
   --stroke2: rgba(255,255,255,.18);
 
-  /* Accent più “tech” ma elegante */
   --accent: #7c5cff;
-  --accent2: #22d3ee; /* ciano leggero per originalità */
+  --accent2: #22d3ee;
   --accentGlow: 0 0 0 6px rgba(124,92,255,.16);
 
   --shadow: 0 18px 50px rgba(0,0,0,.35);
@@ -42,13 +40,13 @@ body{
   min-height: 100vh;
 }
 
-/* Un overlay “grain” leggerissimo per look premium */
+/* subtle grain overlay */
 body::before{
   content:"";
   position: fixed;
   inset: 0;
   pointer-events:none;
-  opacity:.06;
+  opacity:.05;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
   mix-blend-mode: overlay;
 }
@@ -67,7 +65,10 @@ a{
 
 a:hover{ color: rgba(255,255,255,.98); }
 
-/* Topbar più “premium” */
+/* ========================= */
+/* Topbar Premium */
+/* ========================= */
+
 .topbar{
   width: min(1100px, 92vw);
   margin: 18px auto;
@@ -88,7 +89,6 @@ a:hover{ color: rgba(255,255,255,.98); }
   z-index: 10;
 }
 
-/* Brand più riconoscibile senza essere “logo” */
 .brand{
   font-weight: 650;
   letter-spacing: .2px;
@@ -97,52 +97,62 @@ a:hover{ color: rgba(255,255,255,.98); }
   position: relative;
 }
 
-.brand::after{
-  content:"";
-  position:absolute;
-  inset:-1px;
-  border-radius:999px;
-  background: radial-gradient(400px 60px at 10% 50%, rgba(124,92,255,.35), transparent 60%);
-  opacity:.6;
-  z-index:-1;
-}
-
 .nav{ display:flex; gap:10px; align-items:center; }
 
+/* underline animata */
 .nav a{
+  position: relative;
   padding: 8px 12px;
   border-radius: 999px;
   color: rgba(255,255,255,.78);
-  border: 1px solid transparent;
+  transition: all .2s var(--ease);
+}
+
+.nav a::after{
+  content:"";
+  position:absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 6px;
+  height: 2px;
+  border-radius: 99px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .22s var(--ease);
+  opacity: .9;
 }
 
 .nav a:hover{
   color: rgba(255,255,255,.96);
-  border-color: rgba(255,255,255,.14);
   background: rgba(255,255,255,.06);
 }
 
-/* Cards con highlight e micro-interazione */
+.nav a:hover::after{
+  transform: scaleX(1);
+}
+
+/* ========================= */
+/* Cards */
+/* ========================= */
+
 .heroCard, .card{
   border:1px solid var(--stroke);
   background:
     radial-gradient(900px 220px at 12% 0%, rgba(124,92,255,.22), transparent 60%),
     linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.045));
   backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-
   border-radius: var(--radius2);
   padding: 24px;
   box-shadow: var(--shadow2);
-  transition: transform .25s var(--ease), border-color .25s var(--ease), background .25s var(--ease);
+  transition: transform .25s var(--ease), border-color .25s var(--ease);
 }
 
 .card:hover{
-  transform: translateY(-2px);
+  transform: translateY(-3px);
   border-color: rgba(255,255,255,.20);
 }
 
-/* Sezioni e grid */
 .section{ margin-top: 38px; }
 
 .grid{
@@ -151,7 +161,10 @@ a:hover{ color: rgba(255,255,255,.98); }
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
-/* Input/select più “app-like” */
+/* ========================= */
+/* Inputs */
+/* ========================= */
+
 .input, .select{
   width:100%;
   padding: 11px 12px;
@@ -160,7 +173,7 @@ a:hover{ color: rgba(255,255,255,.98); }
   background: rgba(255,255,255,.05);
   color: var(--text);
   outline: none;
-  transition: border-color .2s var(--ease), box-shadow .2s var(--ease), transform .2s var(--ease);
+  transition: all .2s var(--ease);
 }
 
 .input:focus, .select:focus{
@@ -169,44 +182,80 @@ a:hover{ color: rgba(255,255,255,.98); }
   transform: translateY(-1px);
 }
 
-/* Language switcher più coerente col resto */
-.languageSwitcher{ display:flex; gap:8px; align-items:center; }
+/* ========================= */
+/* INTERACTIVE BUTTON SYSTEM */
+/* ========================= */
 
-.languageLink{
-  padding: 7px 10px;
+.btn, button, .languageLink{
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  padding: 10px 14px;
   border-radius: 999px;
-  border: 1px solid var(--stroke);
-  font-size: 12px;
-  color: rgba(255,255,255,.74);
-  background: rgba(255,255,255,.03);
-  transition: transform .2s var(--ease), border-color .2s var(--ease), background .2s var(--ease);
-}
-
-.languageLink:hover{
-  transform: translateY(-1px);
-  border-color: rgba(255,255,255,.22);
+  border: 1px solid rgba(255,255,255,.14);
   background: rgba(255,255,255,.06);
+  color: var(--text);
+  cursor: pointer;
+
+  transition:
+    transform .18s var(--ease),
+    box-shadow .18s var(--ease),
+    border-color .18s var(--ease),
+    background .18s var(--ease);
 }
 
+/* Hover glow */
+.btn:hover, button:hover, .languageLink:hover{
+  transform: translateY(-2px);
+  border-color: rgba(255,255,255,.25);
+  background: rgba(255,255,255,.09);
+  box-shadow: 0 12px 28px rgba(0,0,0,.28);
+}
+
+/* Press effect */
+.btn:active, button:active, .languageLink:active{
+  transform: translateY(1px) scale(.98);
+  box-shadow: 0 6px 16px rgba(0,0,0,.22);
+}
+
+/* Accent button */
+.btn.accent, button.accent{
+  border-color: rgba(124,92,255,.55);
+  background: linear-gradient(180deg, rgba(124,92,255,.4), rgba(124,92,255,.18));
+}
+
+.btn.accent:hover, button.accent:hover{
+  border-color: rgba(124,92,255,.75);
+}
+
+/* Focus accessibile */
+.btn:focus-visible, button:focus-visible,
+.nav a:focus-visible, .languageLink:focus-visible,
+.input:focus-visible, .select:focus-visible{
+  outline: none;
+  box-shadow: var(--accentGlow);
+}
+
+/* Active language */
 .languageLink.active{
-  color: rgba(255,255,255,.95);
   border-color: rgba(124,92,255,.55);
   background: linear-gradient(180deg, rgba(124,92,255,.35), rgba(124,92,255,.18));
+  color: white;
 }
 
-/* Footer */
+/* ========================= */
+
 .footer{
   text-align:center;
   padding: 28px 10px;
   color: var(--muted);
-  opacity: .95;
 }
 
-/* Piccolo miglioramento per testi lunghi */
 p{ color: rgba(255,255,255,.78); }
 h1,h2,h3{ letter-spacing: .2px; }
 
-/* Rispetto preferenze movimento */
 @media (prefers-reduced-motion: reduce){
   *{ transition: none !important; scroll-behavior: auto; }
 }
