@@ -16,6 +16,65 @@
     a { color: inherit; }
   </style>
 </head>
+  <script>
+  // 1) Auto-apply classes (così non devi modificare troppo l'HTML)
+  //    - tutte le .card e .heroCard diventano tilt + reveal
+  document.querySelectorAll(".card, .heroCard").forEach(el => {
+    el.classList.add("tilt", "reveal");
+  });
+
+  // 2) Tilt + glow follow mouse
+  const maxTilt = 10; // gradi (sobrio)
+  const targets = document.querySelectorAll(".tilt");
+
+  function setVars(el, x, y){
+    el.style.setProperty("--mx", x + "%");
+    el.style.setProperty("--my", y + "%");
+  }
+
+  targets.forEach(el => {
+    el.addEventListener("mousemove", (e) => {
+      const r = el.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width;  // 0..1
+      const py = (e.clientY - r.top) / r.height; // 0..1
+
+      // glow position
+      setVars(el, px * 100, py * 100);
+
+      // tilt
+      const ry = (px - 0.5) * (maxTilt * 2);   // -max..+max
+      const rx = (0.5 - py) * (maxTilt * 2);   // -max..+max
+      el.style.setProperty("--rx", rx.toFixed(2) + "deg");
+      el.style.setProperty("--ry", ry.toFixed(2) + "deg");
+
+      el.classList.add("is-hover");
+    });
+
+    el.addEventListener("mouseenter", () => {
+      el.classList.add("is-hover");
+    });
+
+    el.addEventListener("mouseleave", () => {
+      el.classList.remove("is-hover");
+      el.style.setProperty("--rx", "0deg");
+      el.style.setProperty("--ry", "0deg");
+      el.style.setProperty("--mx", "50%");
+      el.style.setProperty("--my", "50%");
+    });
+  });
+
+  // 3) Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add("in");
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+</script>
 <body>
   <p class="muted">Redirecting to your language…</p>
 
@@ -53,4 +112,5 @@
   </p>
 </body>
 </html>
+
 
