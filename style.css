@@ -1,28 +1,73 @@
 :root{
-  --bg: #0b0f17;
+  /* Palette */
+  --bg: #070A12;
+  --bg2: #0B1020;
+
   --panel: rgba(255,255,255,.06);
+  --panel2: rgba(255,255,255,.08);
+
   --text: rgba(255,255,255,.92);
   --muted: rgba(255,255,255,.68);
-  --stroke: rgba(255,255,255,.14);
+
+  --stroke: rgba(255,255,255,.12);
+  --stroke2: rgba(255,255,255,.18);
+
+  /* Accent più “tech” ma elegante */
   --accent: #7c5cff;
+  --accent2: #22d3ee; /* ciano leggero per originalità */
+  --accentGlow: 0 0 0 6px rgba(124,92,255,.16);
+
   --shadow: 0 18px 50px rgba(0,0,0,.35);
+  --shadow2: 0 10px 30px rgba(0,0,0,.28);
+
   --radius: 18px;
+  --radius2: 26px;
+
+  --ease: cubic-bezier(.2,.8,.2,1);
 }
 
-*{ box-sizing: border-box; }
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+
 body{
   margin:0;
-  font-family: ui-sans-serif, system-ui;
-  background: var(--bg);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
   color: var(--text);
+  line-height: 1.55;
+  background:
+    radial-gradient(1200px 700px at 20% -10%, rgba(124,92,255,.35), transparent 55%),
+    radial-gradient(1000px 600px at 90% 0%, rgba(34,211,238,.22), transparent 55%),
+    radial-gradient(900px 500px at 60% 115%, rgba(124,92,255,.18), transparent 55%),
+    linear-gradient(180deg, var(--bg), var(--bg2));
+  min-height: 100vh;
+}
+
+/* Un overlay “grain” leggerissimo per look premium */
+body::before{
+  content:"";
+  position: fixed;
+  inset: 0;
+  pointer-events:none;
+  opacity:.06;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
 }
 
 main{
   width: min(1100px, 92vw);
   margin: 0 auto;
-  padding: 30px 0 70px;
+  padding: 34px 0 80px;
 }
 
+a{
+  text-decoration:none;
+  color: var(--text);
+  transition: color .2s var(--ease), opacity .2s var(--ease);
+}
+
+a:hover{ color: rgba(255,255,255,.98); }
+
+/* Topbar più “premium” */
 .topbar{
   width: min(1100px, 92vw);
   margin: 18px auto;
@@ -30,57 +75,138 @@ main{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  border:1px solid var(--stroke);
-  background: var(--panel);
+
+  border: 1px solid var(--stroke2);
+  background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.05));
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
   border-radius:999px;
+  box-shadow: var(--shadow2);
+  position: sticky;
+  top: 12px;
+  z-index: 10;
 }
 
-.nav{ display:flex; gap:12px; }
+/* Brand più riconoscibile senza essere “logo” */
+.brand{
+  font-weight: 650;
+  letter-spacing: .2px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  position: relative;
+}
 
-a{ text-decoration:none; color:var(--text); }
+.brand::after{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  border-radius:999px;
+  background: radial-gradient(400px 60px at 10% 50%, rgba(124,92,255,.35), transparent 60%);
+  opacity:.6;
+  z-index:-1;
+}
 
+.nav{ display:flex; gap:10px; align-items:center; }
+
+.nav a{
+  padding: 8px 12px;
+  border-radius: 999px;
+  color: rgba(255,255,255,.78);
+  border: 1px solid transparent;
+}
+
+.nav a:hover{
+  color: rgba(255,255,255,.96);
+  border-color: rgba(255,255,255,.14);
+  background: rgba(255,255,255,.06);
+}
+
+/* Cards con highlight e micro-interazione */
 .heroCard, .card{
   border:1px solid var(--stroke);
-  background: var(--panel);
-  border-radius:var(--radius);
-  padding:22px;
+  background:
+    radial-gradient(900px 220px at 12% 0%, rgba(124,92,255,.22), transparent 60%),
+    linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.045));
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border-radius: var(--radius2);
+  padding: 24px;
+  box-shadow: var(--shadow2);
+  transition: transform .25s var(--ease), border-color .25s var(--ease), background .25s var(--ease);
 }
 
-.section{ margin-top:35px; }
+.card:hover{
+  transform: translateY(-2px);
+  border-color: rgba(255,255,255,.20);
+}
+
+/* Sezioni e grid */
+.section{ margin-top: 38px; }
 
 .grid{
   display:grid;
-  gap:12px;
-  grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+  gap:14px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
+/* Input/select più “app-like” */
 .input, .select{
   width:100%;
-  padding:10px;
-  border-radius:12px;
-  border:1px solid var(--stroke);
-  background:rgba(255,255,255,.05);
-  color:white;
+  padding: 11px 12px;
+  border-radius: 14px;
+  border: 1px solid var(--stroke);
+  background: rgba(255,255,255,.05);
+  color: var(--text);
+  outline: none;
+  transition: border-color .2s var(--ease), box-shadow .2s var(--ease), transform .2s var(--ease);
 }
 
-.languageSwitcher{
-  display:flex;
-  gap:8px;
+.input:focus, .select:focus{
+  border-color: rgba(124,92,255,.55);
+  box-shadow: var(--accentGlow);
+  transform: translateY(-1px);
 }
+
+/* Language switcher più coerente col resto */
+.languageSwitcher{ display:flex; gap:8px; align-items:center; }
 
 .languageLink{
-  padding:6px 10px;
-  border-radius:999px;
-  border:1px solid var(--stroke);
-  font-size:12px;
+  padding: 7px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--stroke);
+  font-size: 12px;
+  color: rgba(255,255,255,.74);
+  background: rgba(255,255,255,.03);
+  transition: transform .2s var(--ease), border-color .2s var(--ease), background .2s var(--ease);
+}
+
+.languageLink:hover{
+  transform: translateY(-1px);
+  border-color: rgba(255,255,255,.22);
+  background: rgba(255,255,255,.06);
 }
 
 .languageLink.active{
-  background:rgba(124,92,255,.3);
+  color: rgba(255,255,255,.95);
+  border-color: rgba(124,92,255,.55);
+  background: linear-gradient(180deg, rgba(124,92,255,.35), rgba(124,92,255,.18));
 }
 
+/* Footer */
 .footer{
   text-align:center;
-  padding:20px;
-  color:var(--muted);
+  padding: 28px 10px;
+  color: var(--muted);
+  opacity: .95;
+}
+
+/* Piccolo miglioramento per testi lunghi */
+p{ color: rgba(255,255,255,.78); }
+h1,h2,h3{ letter-spacing: .2px; }
+
+/* Rispetto preferenze movimento */
+@media (prefers-reduced-motion: reduce){
+  *{ transition: none !important; scroll-behavior: auto; }
 }
