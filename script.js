@@ -120,7 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <h3>${title}</h3>
             <p class="muted">${excerpt}</p>
             <div class="tagsRow">
-              ${tags.map(tag => `<span class="pill">${tag}</span>`).join("")}
+              ${tags.map(tag => `<span class="pill">${tag}</span>`).join(" ")}
             </div>
             <a class="link" href="${url}">${t.read}</a>
           `;
@@ -161,4 +161,5 @@ document.addEventListener("DOMContentLoaded", () => {
       grid.innerHTML = `<p class="muted">Error loading articles.</p>`;
     });
 });
+
 
