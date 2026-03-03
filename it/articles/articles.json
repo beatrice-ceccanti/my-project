@@ -2,7 +2,7 @@
   {
     "title": "Il mio primo articolo",
     "date": "2026-02-23",
-    "tags": ["Tecnologia", "Innovazione"],
+    "tags": ["Personale"],
     "excerpt": "Un articolo argomentativo su come la tecnologia cambia il modo in cui impariamo e lavoriamo.",
     "url": "articles/first-article.html",
     "minutes": 5
@@ -10,9 +10,10 @@
   {
     "title": "Medicina e innovazione: promesse e limiti",
     "date": "2026-02-20",
-    "tags": ["Medicina", "Innovazione"],
+    "tags": ["Personale"],
     "excerpt": "Cosa può davvero fare l'innovazione in sanità, e dove servono cautela e metodo.",
     "url": "articles/medicine-innovation.html",
     "minutes": 7
   }
+
 ]
