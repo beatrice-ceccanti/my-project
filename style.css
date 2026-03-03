@@ -161,6 +161,105 @@ a:hover{ color: rgba(255,255,255,.98); }
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
+/* =========================================
+   READ CTA (solo CSS) - per <a class="link">
+   dentro .card
+========================================= */
+
+.card .link{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .55rem;
+
+  margin-top: 14px;
+  width: fit-content;
+
+  padding: 10px 14px;
+  border-radius: 999px;
+
+  font-weight: 650;
+  font-size: 13px;
+  letter-spacing: .25px;
+
+  color: rgba(255,255,255,.95);
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.14);
+
+  box-shadow: 0 10px 22px rgba(0,0,0,.22);
+
+  position: relative;
+  overflow: hidden;
+
+  transition:
+    transform .2s var(--ease),
+    background .2s var(--ease),
+    border-color .2s var(--ease),
+    box-shadow .2s var(--ease);
+}
+
+/* glow premium */
+.card .link::before{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  border-radius: inherit;
+  pointer-events:none;
+  opacity: 0;
+  transition: opacity .25s var(--ease);
+
+  background:
+    radial-gradient(260px 120px at 20% 50%, rgba(124,92,255,.25), transparent 60%),
+    radial-gradient(260px 120px at 80% 50%, rgba(34,211,238,.16), transparent 62%);
+}
+
+/* shimmer “scan” */
+.card .link::after{
+  content:"";
+  position:absolute;
+  top:-40%;
+  left:-60%;
+  width: 60%;
+  height: 180%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.16), transparent);
+  transform: rotate(18deg);
+  opacity: 0;
+  transition: opacity .2s var(--ease), left .65s var(--ease);
+  pointer-events:none;
+}
+
+.card .link:hover{
+  transform: translateY(-2px);
+  background: rgba(255,255,255,.08);
+  border-color: rgba(255,255,255,.22);
+  box-shadow: 0 14px 30px rgba(0,0,0,.28);
+}
+
+.card .link:hover::before{ opacity: 1; }
+.card .link:hover::after{
+  opacity: 1;
+  left: 130%;
+}
+
+/* press */
+.card .link:active{
+  transform: translateY(1px) scale(.98);
+  box-shadow: 0 6px 16px rgba(0,0,0,.22);
+}
+
+/* focus accessibile */
+.card .link:focus-visible{
+  outline: none;
+  box-shadow: var(--accentGlow);
+  border-color: rgba(124,92,255,.65);
+}
+
+/* Se vuoi che la freccia “spinga” leggermente (senza HTML extra) */
+.card .link:hover{
+  letter-spacing: .28px;
+}
+
 /* ========================= */
 /* Inputs */
 /* ========================= */
@@ -356,3 +455,4 @@ h1,h2,h3{ letter-spacing: .2px; }
   .tilt{ transition: none !important; transform: none !important; }
   .btn.premium, button.premium{ animation: none !important; }
 }
+
