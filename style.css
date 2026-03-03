@@ -448,29 +448,4 @@ h1,h2,h3{ letter-spacing:.2px; }
   .btn.premium, button.premium{ animation:none !important; }
 }
 
-/* =========================
-   PERSONAL BRAND MONOGRAM (BC)
-========================= */
-
-.brand{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  font-weight:650;
-}
-
-.brand::before{
-  content:"BC";
-  font-weight:800;
-  font-size:13px;
-  letter-spacing:1px;
-  opacity:.6;
-}
-
-/* micro-interazione */
-.brand:hover::before{
-  filter: saturate(1.08);
-  transform: translateY(-1px);
-  transition: transform .18s var(--ease), filter .18s var(--ease);
-}
 
