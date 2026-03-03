@@ -448,4 +448,80 @@ h1,h2,h3{ letter-spacing:.2px; }
   .btn.premium, button.premium{ animation:none !important; }
 }
 
+/* =========================
+   MOBILE FIX PACK
+   incolla in fondo al CSS
+========================= */
+
+/* 1) stop overflow orizzontale */
+html, body { overflow-x: hidden; } /* utile se qualcosa sborda su mobile */ /* :contentReference[oaicite:2]{index=2} */
+
+/* 2) migliora tap e riduce highlight */
+a, button { -webkit-tap-highlight-color: transparent; }
+
+/* 3) Layout topbar su mobile: va a capo e resta leggibile */
+@media (max-width: 720px){
+  .topbar{
+    border-radius: 18px;            /* meno “pillone” su mobile */
+    padding: 12px;
+    gap: 10px;
+    flex-wrap: wrap;                /* permette di andare su 2 righe */
+    justify-content: space-between;
+  }
+
+  .brand{
+    padding: 6px 10px;
+  }
+
+  .nav{
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .nav a{
+    padding: 8px 10px;
+  }
+
+  .languageSwitcher{
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  main{
+    padding: 24px 0 64px;
+  }
+
+  .heroCard, .card{
+    padding: 18px;
+    border-radius: 20px;
+  }
+
+  /* grid: una colonna pulita */
+  .grid{
+    grid-template-columns: 1fr;
+  }
+
+  /* testo più leggibile su mobile */
+  h1{ font-size: 1.7rem; line-height: 1.15; }
+  .subtitle{ font-size: 1rem; }
+}
+
+/* 4) Sticky + blur su mobile: più stabile (se noti glitch/lag, questo aiuta) */
+@media (max-width: 720px){
+  .topbar{
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* Safari */ /* :contentReference[oaicite:3]{index=3} */
+  }
+}
+
+/* 5) iOS/Safari: a volte overflow+border-radius con overlay può fare artefatti */
+.heroCard, .card{
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+}
+/* (workaround noto per bug di clipping su mobile Safari con border-radius/overflow) :contentReference[oaicite:4]{index=4} */
+
+
 
