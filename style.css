@@ -455,32 +455,16 @@ h1,h2,h3{ letter-spacing:.2px; }
 .brand{
   display:flex;
   align-items:center;
-  gap:10px;
+  gap:12px;
+  font-weight:650;
 }
 
 .brand::before{
   content:"BC";
-  width:32px;
-  height:32px;
-  border-radius: 12px;
-
-  display:grid;
-  place-items:center;
-
-  font-weight: 800;
-  font-size: 12px;
-  letter-spacing: .8px;
-
-  color: rgba(255,255,255,.95);
-
-  background:
-    radial-gradient(120px 60px at 30% 30%, rgba(255,255,255,.16), transparent 60%),
-    linear-gradient(135deg, rgba(124,92,255,.55), rgba(34,211,238,.18));
-
-  border: 1px solid rgba(255,255,255,.16);
-  box-shadow:
-    0 14px 30px rgba(0,0,0,.28),
-    0 0 0 6px rgba(124,92,255,.10);
+  font-weight:800;
+  font-size:13px;
+  letter-spacing:1px;
+  opacity:.6;
 }
 
 /* micro-interazione */
@@ -489,3 +473,4 @@ h1,h2,h3{ letter-spacing:.2px; }
   transform: translateY(-1px);
   transition: transform .18s var(--ease), filter .18s var(--ease);
 }
+
