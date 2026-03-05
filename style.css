@@ -203,24 +203,22 @@ h1,h2,h3{ letter-spacing:.2px; }
   border-color:rgba(255,255,255,.20);
 }
 
-.heroAvatar{
-display:flex;
-justify-content:center;
-align-items:center;
-}
-
 .heroAvatar img{
-width:240px;
-height:auto;
-border-radius:18px;
+  width:260px;
+  height:auto;
 
-box-shadow:
-0 20px 60px rgba(0,0,0,.35),
-0 0 40px rgba(124,92,255,.25);
+  border-radius:18px;
 
-transition:transform .35s var(--ease);
+  background:transparent;
+
+  box-shadow:0 20px 60px rgba(0,0,0,.35);
+
+  transition:transform .35s var(--ease);
 }
 
+.heroAvatar img:hover{
+  transform:translateY(-4px) scale(1.02);
+}
 .heroAvatar img:hover{
 transform:translateY(-4px) scale(1.03);
 }
@@ -545,6 +543,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
   -webkit-mask-image: -webkit-radial-gradient(white, black);
 }
 /* (workaround noto per bug di clipping su mobile Safari con border-radius/overflow) :contentReference[oaicite:4]{index=4} */
+
 
 
 
