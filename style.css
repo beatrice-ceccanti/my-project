@@ -178,12 +178,7 @@ h1,h2,h3{ letter-spacing:.2px; }
   grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
 }
 
-.heroCard, .card{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:60px;
-  
+.card{
   position:relative;
   overflow:hidden;                 /* important for glow overlays */
   transform-style:preserve-3d;     /* for tilt */
@@ -206,6 +201,31 @@ h1,h2,h3{ letter-spacing:.2px; }
 .card:hover{
   transform:translateY(-3px);
   border-color:rgba(255,255,255,.20);
+}
+
+.heroCard {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:60px;
+  
+  position:relative;
+  overflow:hidden;                 /* important for glow overlays */
+  transform-style:preserve-3d;     /* for tilt */
+  border:1px solid var(--stroke);
+
+  background:
+    radial-gradient(900px 220px at 12% 0%, rgba(124,92,255,.22), transparent 60%),
+    linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.045));
+
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+
+  border-radius:var(--radius2);
+  padding:24px;
+  box-shadow:var(--shadow2);
+
+  transition: transform .25s var(--ease), border-color .25s var(--ease);
 }
 
 .heroAvatar img{
