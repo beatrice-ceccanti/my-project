@@ -513,15 +513,22 @@ a, button { -webkit-tap-highlight-color: transparent; }
 /* 3) Layout topbar su mobile: va a capo e resta leggibile */
 @media (max-width: 720px){
   .topbar{
-    border-radius: 18px;            /* meno “pillone” su mobile */
-    padding: 12px;
-    gap: 10px;
-    flex-wrap: wrap;                /* permette di andare su 2 righe */
-    justify-content: space-between;
+    width:92vw;
+    padding:8px 12px;
+
+    flex-wrap:wrap;
+    gap:6px;
+
+    border-radius:20px;
   }
+
 
   .brand{
     padding: 6px 10px;
+  }
+
+  .brand img {
+    height: 36px;
   }
 
   .nav{
@@ -582,6 +589,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
   -webkit-mask-image: -webkit-radial-gradient(white, black);
 }
 /* (workaround noto per bug di clipping su mobile Safari con border-radius/overflow) :contentReference[oaicite:4]{index=4} */
+
 
 
 
