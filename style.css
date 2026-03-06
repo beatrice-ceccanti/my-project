@@ -522,7 +522,6 @@ a, button { -webkit-tap-highlight-color: transparent; }
     border-radius:20px;
   }
 
-
   .brand{
     padding: 6px 10px;
   }
@@ -555,6 +554,10 @@ a, button { -webkit-tap-highlight-color: transparent; }
     padding: 18px;
     border-radius: 20px;
   }
+  
+  .heroCard {
+    flex-direction: column;
+  }
 
   /* grid: una colonna pulita */
   .grid{
@@ -567,28 +570,12 @@ a, button { -webkit-tap-highlight-color: transparent; }
 }
 
 
-
-/* 4) Sticky + blur su mobile: più stabile (se noti glitch/lag, questo aiuta) */
-@media (max-width: 720px){
-  .topbar{
-    width:92vw;
-    padding:8px 12px;
-
-    flex-wrap:wrap;
-    gap:6px;
-
-    border-radius:20px;
-  }
-  .heroCard {
-    flex-direction: column;
-  }
-}
-
-/* 5) iOS/Safari: a volte overflow+border-radius con overlay può fare artefatti */
+/* 4) iOS/Safari: a volte overflow+border-radius con overlay può fare artefatti */
 .heroCard, .card{
   -webkit-mask-image: -webkit-radial-gradient(white, black);
 }
 /* (workaround noto per bug di clipping su mobile Safari con border-radius/overflow) :contentReference[oaicite:4]{index=4} */
+
 
 
 
