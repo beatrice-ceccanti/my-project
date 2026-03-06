@@ -228,6 +228,10 @@ h1,h2,h3{ letter-spacing:.2px; }
   transition: transform .25s var(--ease), border-color .25s var(--ease);
 }
 
+.heroText {
+  display: inline-grid;
+}
+
 .heroAvatar img{
   width:260px;
   height:auto;
@@ -559,6 +563,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
   -webkit-mask-image: -webkit-radial-gradient(white, black);
 }
 /* (workaround noto per bug di clipping su mobile Safari con border-radius/overflow) :contentReference[oaicite:4]{index=4} */
+
 
 
 
