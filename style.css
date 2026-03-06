@@ -560,11 +560,18 @@ a, button { -webkit-tap-highlight-color: transparent; }
   .subtitle{ font-size: 1rem; }
 }
 
+
+
 /* 4) Sticky + blur su mobile: più stabile (se noti glitch/lag, questo aiuta) */
 @media (max-width: 720px){
   .topbar{
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px); /* Safari */ /* :contentReference[oaicite:3]{index=3} */
+    width:92vw;
+    padding:8px 12px;
+
+    flex-wrap:wrap;
+    gap:6px;
+
+    border-radius:20px;
   }
   .heroCard {
     flex-direction: column;
@@ -576,6 +583,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
   -webkit-mask-image: -webkit-radial-gradient(white, black);
 }
 /* (workaround noto per bug di clipping su mobile Safari con border-radius/overflow) :contentReference[oaicite:4]{index=4} */
+
 
 
 
