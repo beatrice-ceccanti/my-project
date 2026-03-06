@@ -562,6 +562,9 @@ a, button { -webkit-tap-highlight-color: transparent; }
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px); /* Safari */ /* :contentReference[oaicite:3]{index=3} */
   }
+  .heroCard {
+    flex-direction: vertical;
+  }
 }
 
 /* 5) iOS/Safari: a volte overflow+border-radius con overlay può fare artefatti */
@@ -569,6 +572,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
   -webkit-mask-image: -webkit-radial-gradient(white, black);
 }
 /* (workaround noto per bug di clipping su mobile Safari con border-radius/overflow) :contentReference[oaicite:4]{index=4} */
+
 
 
 
