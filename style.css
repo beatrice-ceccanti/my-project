@@ -536,9 +536,8 @@ a, button { -webkit-tap-highlight-color: transparent; }
   }
 
   .languageSwitcher{
-    width: 100%;
-    justify-content: flex-start;
-    flex-wrap: wrap;
+    width:100%;
+    justify-content:center;
   }
 
   main{
@@ -583,6 +582,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
   -webkit-mask-image: -webkit-radial-gradient(white, black);
 }
 /* (workaround noto per bug di clipping su mobile Safari con border-radius/overflow) :contentReference[oaicite:4]{index=4} */
+
 
 
 
