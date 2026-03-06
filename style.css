@@ -73,7 +73,7 @@ h1,h2,h3{ letter-spacing:.2px; }
 .topbar{
   width:min(1100px, 92vw);
   margin: 0 auto;
-  padding:12px 14px;
+  padding:8px 10px;
   display:flex;
   justify-content:space-between;
   align-items:center;
@@ -99,7 +99,7 @@ h1,h2,h3{ letter-spacing:.2px; }
 }
 
 .brand img{
-  height:50px;
+  height:70px;
   width:auto;
   opacity:0.95;
 }
@@ -572,6 +572,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
   -webkit-mask-image: -webkit-radial-gradient(white, black);
 }
 /* (workaround noto per bug di clipping su mobile Safari con border-radius/overflow) :contentReference[oaicite:4]{index=4} */
+
 
 
 
