@@ -99,7 +99,7 @@ h1,h2,h3{ letter-spacing:.2px; }
 }
 
 .brand img{
-  height:28px;
+  height:38px;
   width:auto;
   opacity:0.95;
 }
@@ -569,6 +569,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
   -webkit-mask-image: -webkit-radial-gradient(white, black);
 }
 /* (workaround noto per bug di clipping su mobile Safari con border-radius/overflow) :contentReference[oaicite:4]{index=4} */
+
 
 
 
