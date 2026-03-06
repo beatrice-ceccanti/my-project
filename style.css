@@ -72,8 +72,8 @@ h1,h2,h3{ letter-spacing:.2px; }
 ========================= */
 .topbar{
   width:min(1100px, 92vw);
-  margin: 0 auto;
-  padding:8px 10px;
+  margin:0 auto;
+  padding:6px 14px;
   display:flex;
   justify-content:space-between;
   align-items:center;
@@ -92,14 +92,15 @@ h1,h2,h3{ letter-spacing:.2px; }
 }
 
 .brand{
-  font-weight:650;
-  letter-spacing:.2px;
-  padding:8px 12px;
-  border-radius:999px;
+  display:flex;
+  align-items:center;
+  padding:0;
+  line-height:0;
 }
 
 .brand img{
-  height:70px;
+  display:block;
+  height:38px;
   width:auto;
   opacity:0.95;
 }
