@@ -563,7 +563,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
     -webkit-backdrop-filter: blur(10px); /* Safari */ /* :contentReference[oaicite:3]{index=3} */
   }
   .heroCard {
-    flex-direction: vertical;
+    flex-direction: column;
   }
 }
 
@@ -572,6 +572,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
   -webkit-mask-image: -webkit-radial-gradient(white, black);
 }
 /* (workaround noto per bug di clipping su mobile Safari con border-radius/overflow) :contentReference[oaicite:4]{index=4} */
+
 
 
 
