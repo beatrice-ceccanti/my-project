@@ -523,6 +523,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
   }
 
   .brand{
+    display: inline;
     padding: 6px 10px;
   }
 
@@ -533,7 +534,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
   .nav{
     width:100%;
     justify-content:center;
-    flex-wrap:nowrap;
+    /* flex-wrap:nowrap; */
     /* gap:6px; */
   }
 
@@ -575,6 +576,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
   -webkit-mask-image: -webkit-radial-gradient(white, black);
 }
 /* (workaround noto per bug di clipping su mobile Safari con border-radius/overflow) :contentReference[oaicite:4]{index=4} */
+
 
 
 
