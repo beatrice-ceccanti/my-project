@@ -512,15 +512,20 @@ a, button { -webkit-tap-highlight-color: transparent; }
 
 /* 3) Layout topbar su mobile: va a capo e resta leggibile */
 @media (max-width: 720px){
+  
+  main{
+    padding: 110px 0 250px;
+  }
+  
   .topbar{
     width:92vw;
     padding:8px 12px;
 
+    display: flex;
     flex-wrap:wrap;
     gap:6px;
 
     border-radius:20px;
-    display: flex;
   }
 
   .brand{
@@ -529,6 +534,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
   }
 
   .brand img {
+    display: inline;
     height: 36px;
   }
 
@@ -548,13 +554,10 @@ a, button { -webkit-tap-highlight-color: transparent; }
     justify-content:center;
   }
 
-  main{
-    padding: 110px 0 200px;
-  }
-
   .heroCard, .card{
     padding: 18px;
     border-radius: 20px;
+    -webkit-mask-image: -webkit-radial-gradient(white, black); /* iOS/Safari: a volte overflow+border-radius con overlay può fare artefatti */
   }
   
   .heroCard {
@@ -570,13 +573,6 @@ a, button { -webkit-tap-highlight-color: transparent; }
   h1{ font-size: 1.7rem; line-height: 1.15; }
   .subtitle{ font-size: 1rem; }
 }
-
-
-/* 4) iOS/Safari: a volte overflow+border-radius con overlay può fare artefatti */
-.heroCard, .card{
-  -webkit-mask-image: -webkit-radial-gradient(white, black);
-}
-/* (workaround noto per bug di clipping su mobile Safari con border-radius/overflow) :contentReference[oaicite:4]{index=4} */
 
 
 
