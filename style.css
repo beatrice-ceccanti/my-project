@@ -110,7 +110,7 @@ h1,h2,h3{ letter-spacing:.2px; }
 
 .nav{
   display:flex;
-  gap:5px;
+  gap:10px;
   align-items:center;
 }
 
@@ -543,7 +543,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
     width:100%;
     justify-content: space-between;
     /* flex-wrap:nowrap; */
-    /* gap:6px; */
+    gap:3px;
   }
 
   .nav a{
@@ -574,6 +574,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
   h1{ font-size: 1.7rem; line-height: 1.15; }
   .subtitle{ font-size: 1rem; }
 }
+
 
 
 
