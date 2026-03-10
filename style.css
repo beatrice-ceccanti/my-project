@@ -540,14 +540,15 @@ a, button { -webkit-tap-highlight-color: transparent; }
   }
 
   .nav{
-    width:100%;
-    justify-content: space-between;
-    /* flex-wrap:nowrap; */
-    gap:3px;
+  width:100%;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:6px;
   }
 
-  .nav a{
-    padding: 8px 10px;
+.nav a{
+  padding:6px 10px;
   }
 
   .languageSwitcher{
@@ -574,6 +575,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
   h1{ font-size: 1.7rem; line-height: 1.15; }
   .subtitle{ font-size: 1rem; }
 }
+
 
 
 
