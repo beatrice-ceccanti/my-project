@@ -522,15 +522,15 @@ a, button { -webkit-tap-highlight-color: transparent; }
     padding:8px 12px;
 
     display: flex;
-    flex-wrap:wrap;
+    justify-content: space-between;
     gap:6px;
 
     border-radius:20px;
   }
 
   .brand{
-    display: inline;
     padding: 6px 10px;
+    display: inline;
   }
 
   .brand img {
@@ -540,7 +540,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
 
   .nav{
     width:100%;
-    justify-content:center;
+    justify-content: space-between;
     /* flex-wrap:nowrap; */
     /* gap:6px; */
   }
@@ -573,6 +573,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
   h1{ font-size: 1.7rem; line-height: 1.15; }
   .subtitle{ font-size: 1rem; }
 }
+
 
 
 
