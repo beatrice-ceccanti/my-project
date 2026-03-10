@@ -522,6 +522,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
     padding:8px 12px;
 
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     gap:6px;
 
@@ -573,6 +574,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
   h1{ font-size: 1.7rem; line-height: 1.15; }
   .subtitle{ font-size: 1rem; }
 }
+
 
 
 
