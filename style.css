@@ -534,7 +534,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
     width:100%;
     justify-content:center;
     flex-wrap:wrap;
-    gap:6px;
+    /* gap:6px; */
   }
 
   .nav a{
@@ -575,6 +575,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
   -webkit-mask-image: -webkit-radial-gradient(white, black);
 }
 /* (workaround noto per bug di clipping su mobile Safari con border-radius/overflow) :contentReference[oaicite:4]{index=4} */
+
 
 
 
