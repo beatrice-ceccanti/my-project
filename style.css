@@ -529,6 +529,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
 
   .brand img {
     height: 36px;
+    display: flex;
   }
 
   .nav{
@@ -576,6 +577,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
   -webkit-mask-image: -webkit-radial-gradient(white, black);
 }
 /* (workaround noto per bug di clipping su mobile Safari con border-radius/overflow) :contentReference[oaicite:4]{index=4} */
+
 
 
 
