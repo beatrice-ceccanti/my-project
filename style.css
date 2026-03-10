@@ -547,7 +547,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
   }
 
   main{
-    padding: 110px 0 80px;
+    padding: 110px 0 200px;
   }
 
   .heroCard, .card{
@@ -575,6 +575,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
   -webkit-mask-image: -webkit-radial-gradient(white, black);
 }
 /* (workaround noto per bug di clipping su mobile Safari con border-radius/overflow) :contentReference[oaicite:4]{index=4} */
+
 
 
 
