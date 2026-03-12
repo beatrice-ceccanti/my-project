@@ -506,41 +506,9 @@ h1,h2,h3{ letter-spacing:.2px; }
 ========================= */
 
 /* glow follow mouse (usa --mx/--my dal JS) */
-.card::before, .heroCard::before{
-  content:"";
-  position:absolute;
-  inset:-1px;
-  border-radius:inherit;
-  pointer-events:none;
-  opacity:0;
-  transition:opacity .25s var(--ease);
-  background:radial-gradient(380px 220px at var(--mx, 50%) var(--my, 50%), rgba(124,92,255,.25), transparent 60%);
-}
+.card::before, .heroCard::before,
 .card::after, .heroCard::after{
-  content:"";
-  position:absolute;
-  inset:-1px;
-  border-radius:inherit;
-  pointer-events:none;
-  opacity:0;
-  transition:opacity .25s var(--ease);
-  background:radial-gradient(420px 260px at var(--mx, 50%) var(--my, 50%), rgba(34,211,238,.16), transparent 62%);
-  mix-blend-mode:screen;
-}
-
-.card.is-hover::before, .card.is-hover::after,
-.heroCard.is-hover::before, .heroCard.is-hover::after{
-  opacity:0;
-}
-
-/* tilt (JS imposta --rx/--ry e class .tilt/.is-hover) */
-.tilt{
-  will-change:transform;
-  transition:transform .18s var(--ease);
-}
-.tilt.is-hover{
-  transition:transform .06s linear;
-  transform:rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(-2px);
+  content:none;
 }
 
 /* reveal on scroll */
@@ -649,6 +617,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
   h1{ font-size: 1.7rem; line-height: 1.15; }
   .subtitle{ font-size: 1rem; }
 }
+
 
 
 
