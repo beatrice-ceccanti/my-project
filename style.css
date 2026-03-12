@@ -357,18 +357,7 @@ h1,h2,h3{ letter-spacing:.2px; }
 
 /* shimmer scan */
 .card .link::after{
-  content:"";
-  position:absolute;
-  top:-40%;
-  left:-60%;
-  width:60%;
-  height:180%;
-  border-radius:999px;
-  background:linear-gradient(90deg, transparent, rgba(255,255,255,.16), transparent);
-  transform:rotate(18deg);
-  opacity:0;
-  transition:opacity .2s var(--ease), left .65s var(--ease);
-  pointer-events:none;
+  display: none;
 }
 
 .card .link:hover{
@@ -617,6 +606,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
   h1{ font-size: 1.7rem; line-height: 1.15; }
   .subtitle{ font-size: 1rem; }
 }
+
 
 
 
