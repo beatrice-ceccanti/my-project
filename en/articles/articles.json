@@ -4,7 +4,7 @@
     "date": "2026-02-23",
     "tags": ["Personal"],
     "excerpt": "An argumentative piece on how technology changes how we learn and work.",
-    "url": "articles/first-article.html",
+    "slug": "articles/first-article.html",
     "minutes": 5
   },
   {
@@ -12,8 +12,9 @@
     "date": "2026-02-20",
     "tags": ["Personal"],
     "excerpt": "What innovation can realistically do for healthcare—and where caution and method matter.",
-    "url": "articles/medicine-innovation.html",
+    "slug": "articles/medicine-innovation.html",
     "minutes": 7
   }
 
 ]
+
