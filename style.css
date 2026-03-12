@@ -97,9 +97,9 @@ a{
   color:var(--text);
   transition: color .2s var(--ease), opacity .2s var(--ease);
 }
-a:hover{ color:rgba(255,255,255,.98); }
+a:hover{ color:var(--text); }
 
-p{ color:rgba(255,255,255,.78); }
+p{ color:var(--muted); }
 h1,h2,h3{ letter-spacing:.2px; }
 
 /* =========================
@@ -154,7 +154,7 @@ h1,h2,h3{ letter-spacing:.2px; }
   position:relative;
   padding:8px 12px;
   border-radius:999px;
-  color:rgba(255,255,255,.78);
+  color:var(--muted);
   transition: background .2s var(--ease), color .2s var(--ease);
 }
 
@@ -174,7 +174,7 @@ h1,h2,h3{ letter-spacing:.2px; }
 }
 
 .nav a:hover{
-  color:rgba(255,255,255,.96);
+  color:var(--text);
   background:rgba(255,255,255,.06);
 }
 .nav a:hover::after{ transform:scaleX(1); }
@@ -196,7 +196,7 @@ h1,h2,h3{ letter-spacing:.2px; }
   border-radius:999px;
   border:1px solid rgba(255,255,255,.14);
   background:rgba(255,255,255,.04);
-  color:rgba(255,255,255,.78);
+  color:var(--muted);
   font-size:12px;
   transition: transform .18s var(--ease), background .18s var(--ease), border-color .18s var(--ease);
 }
@@ -207,7 +207,7 @@ h1,h2,h3{ letter-spacing:.2px; }
 }
 .languageLink:active{ transform:translateY(1px) scale(.99); }
 .languageLink.active{
-  color:rgba(255,255,255,.95);
+  color:var(--text);
   border-color:rgba(124,92,255,.55);
   background:linear-gradient(180deg, rgba(124,92,255,.35), rgba(124,92,255,.18));
 }
@@ -307,7 +307,7 @@ h1,h2,h3{ letter-spacing:.2px; }
   font-size:13px;
   letter-spacing:.25px;
 
-  color:rgba(255,255,255,.95);
+  color:var(--text);
   background:rgba(255,255,255,.05);
   border:1px solid rgba(255,255,255,.14);
 
