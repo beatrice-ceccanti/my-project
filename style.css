@@ -277,9 +277,10 @@ h1,h2,h3{ letter-spacing:.2px; }
   transform-style:preserve-3d;     /* for tilt */
   border:1px solid var(--stroke);
 
-  background:
+  background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.045));
+  /* background:
     radial-gradient(900px 220px at 12% 0%, rgba(124,92,255,.22), transparent 60%),
-    linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.045));
+    linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.045)); */
 
   backdrop-filter:blur(14px);
   -webkit-backdrop-filter:blur(14px);
@@ -651,3 +652,4 @@ a, button { -webkit-tap-highlight-color: transparent; }
   h1{ font-size: 1.7rem; line-height: 1.15; }
   .subtitle{ font-size: 1rem; }
 }
+
