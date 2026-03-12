@@ -3,15 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Articoli — Tecnologia, Innovazione, Medicina</title>
+  <title>Beatrice Ceccanti — Ingegnere Chimico</title>
   <link rel="stylesheet" href="../style.css" />
 </head>
 <body>
-  <header class="topbar">
-    <a class="brand" href="./">Beatrice Ceccanti</a>
 
+  <header class="topbar">
+    <a class="brand" href="./">
+      <img src="../assets/logo.png" alt="BC Logo">
+    </a>
     <nav class="nav">
-      <a href="#about">Chi sono</a>
+      
+      <a href="#about">Profilo</a>
       <a href="#latest">Pubblicazioni</a>
       <a href="#contact">Contatti</a>
     </nav>
@@ -25,67 +28,78 @@
   </header>
 
   <main>
+
+    <!-- HERO -->
     <section class="hero">
       <div class="heroCard">
-        <p class="badge">Ingegneria Chimica • Innovazione • Lingue e approccio internazionale</p>
-        <h1>Ingegnere chimico con uno sguardo internazionale.</h1>
-        <p class="subtitle">
-          Rigore, pensiero metodologico e adattamento a contesti internazionali.
-        </p>
+        <div class="heroText">
+          <p class="badge">
+            Ingegneria Chimica • Innovazione • Lingue e mentalità internazionale
+          </p>
+  
+          <h1>Ingegnere chimico con una prospettiva internazionale.</h1>
+          
+          <p class="subtitle">
+            Rigore analitico, visione dei processi e capacità di adattamento in contesti globali.
+          </p> 
+        </div>
+        <div class="heroAvatar">
+          <img src="../assets/avatar-dark.png" alt="Ritratto di Beatrice">
+        </div>
       </div>
     </section>
-
-    <section class="section" id="latest">
-      <div class="sectionHead">
-        <h2>Ultimi articoli</h2>
-        <p>Usa la ricerca o filtra per tag.</p>
-      </div>
-
-      <div class="grid" id="articlesGrid"></div>
-    </section>
-
+    
+    <!-- ABOUT -->
     <section class="section" id="about">
       <div class="sectionHead">
-        <h2>Chi sono</h2>
+        <h2>Profilo</h2>
         <p>Profilo professionale.</p>
       </div>
 
       <div class="card">
         <p class="muted">
-          Ciao! Sono <strong>Beatrice Ceccanti</strong>. Sono un ingegnere chimico con un forte interesse verso l'innovazione e i contesti internazionali.
-          Adotto un approccio tecnico e una prospettiva multilingue che mi permette di lavorare in ambienti diversi.
+          Ciao, sono <strong>Beatrice Ceccanti</strong>. Sono un'Ingegnere Chimico con un forte interesse
+          per l’innovazione e per i contesti internazionali. Il mio percorso combina analisi
+          tecnica, problem solving strutturato e una prospettiva multilingue che mi
+          consente di operare efficacemente in ambienti diversi.
         </p>
       </div>
     </section>
 
+    <!-- PUBLICATIONS -->
+    <section class="section" id="latest">
+      <div class="sectionHead">
+        <div>
+          <h2>Pubblicazioni</h2>
+          <p>Articoli selezionati e lavori scritti.</p>
+        </div>
+        <a class="btn" href="./articles/" style="margin-bottom: 16px;">Vedi tutto</a>
+      </div>
+    
+      <div class="grid" id="articlesGrid"></div>
+    </section>
+    
+    <!-- CONTACT -->
     <section class="section" id="contact">
       <div class="sectionHead">
         <h2>Contatti</h2>
-        <p>Per collaborazioni, feedback o proposte.</p>
+        <p>Per opportunità professionali o collaborazioni.</p>
       </div>
 
       <div class="card">
-          <h3>Email</h3>
-          <p><span class="muted">Email:</span> <a class="link" href="mailto:beatrice.ceccanti@gmail.com">beatrice.ceccanti@gmail.com</a></p>
-        </div>
+        <p>
+          <strong>Email:</strong>
+          <a class="link" href="mailto:beatrice.ceccanti@gmail.com">beatrice.ceccanti@gmail.com</a>
+        </p>
       </div>
     </section>
+
   </main>
 
   <footer class="footer">
-    <p>© <span id="year"></span> Beatrice Ceccanti </p>
+    <p>© <span id="year"></span> Beatrice Ceccanti</p>
   </footer>
 
   <script src="../script.js"></script>
 </body>
-
 </html>
-
-
-
-
-
-
-
-
-
