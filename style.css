@@ -129,6 +129,12 @@ h1,h2,h3{ letter-spacing:.2px; }
   z-index:1000;
 }
 
+@media (prefers-color-scheme: light){
+  .topbar{
+    background:linear-gradient(180deg, rgba(255,255,255,.82), rgba(255,255,255,.68));
+  }
+}
+
 .brand{
   display:flex;
   align-items:center;
@@ -210,6 +216,18 @@ h1,h2,h3{ letter-spacing:.2px; }
   color:var(--text);
   border-color:rgba(124,92,255,.55);
   background:linear-gradient(180deg, rgba(124,92,255,.35), rgba(124,92,255,.18));
+}
+
+@media (prefers-color-scheme: light){
+  .languageLink{
+    border:1px solid rgba(0,0,0,.12);
+    background:rgba(255,255,255,.65);
+  }
+
+  .languageLink:hover{
+    border-color:rgba(0,0,0,.18);
+    background:rgba(255,255,255,.88);
+  }
 }
 
 /* =========================
@@ -374,6 +392,18 @@ h1,h2,h3{ letter-spacing:.2px; }
   border-color:rgba(124,92,255,.65);
 }
 
+@media (prefers-color-scheme: light){
+  .card .link{
+    border:1px solid rgba(0,0,0,.12);
+    background:rgba(255,255,255,.70);
+  }
+
+  .card .link:hover{
+    border-color:rgba(0,0,0,.18);
+    background:rgba(255,255,255,.92);
+  }
+}
+
 /* =========================
    INPUTS
 ========================= */
@@ -445,6 +475,18 @@ h1,h2,h3{ letter-spacing:.2px; }
   box-shadow:0 12px 30px rgba(0,0,0,.28);
 }
 .btn.premium:hover, button.premium:hover{ filter:saturate(1.08); }
+
+@media (prefers-color-scheme: light){
+  .btn, button{
+    border:1px solid rgba(0,0,0,.12);
+    background:rgba(255,255,255,.72);
+  }
+
+  .btn:hover, button:hover{
+    border-color:rgba(0,0,0,.18);
+    background:rgba(255,255,255,.90);
+  }
+}
 
 @keyframes premiumShift{
   0%{ background-position:0% 50%; }
