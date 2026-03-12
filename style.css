@@ -494,12 +494,11 @@ h1,h2,h3{ letter-spacing:.2px; }
 }
 
 /* focus accessibile (tastiera) */
+
 .btn:focus-visible, button:focus-visible,
-.nav a:focus-visible, .languageLink:focus-visible,
-.input:focus-visible, .select:focus-visible{
-  outline:none;
-  box-shadow:var(--accentGlow);
-  border-color:rgba(124,92,255,.65);
+.nav a:focus-visible, .languageLink:focus-visible{
+  outline:2px solid rgba(124,92,255,.5);
+  outline-offset:2px;
 }
 
 /* =========================
@@ -650,6 +649,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
   h1{ font-size: 1.7rem; line-height: 1.15; }
   .subtitle{ font-size: 1rem; }
 }
+
 
 
 
