@@ -206,10 +206,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-.nav a::after,
-.card .link::before,
-.card .link::after{
-  content:none !important;
-}
+
+
 
 
