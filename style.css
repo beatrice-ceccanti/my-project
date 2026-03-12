@@ -243,7 +243,7 @@ h1,h2,h3{ letter-spacing:.2px; }
 
 .card{
   position:relative;
-  overflow:hidden;                 /* important for glow overlays */
+  overflow:visible;                 /* important for glow overlays */
   transform-style:preserve-3d;     /* for tilt */
   border:1px solid var(--stroke);
 
@@ -273,7 +273,7 @@ h1,h2,h3{ letter-spacing:.2px; }
   gap:60px;
   
   position:relative;
-  overflow:hidden;                 /* important for glow overlays */
+  overflow:visible;                 /* important for glow overlays */
   transform-style:preserve-3d;     /* for tilt */
   border:1px solid var(--stroke);
   background:
@@ -617,6 +617,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
   h1{ font-size: 1.7rem; line-height: 1.15; }
   .subtitle{ font-size: 1rem; }
 }
+
 
 
 
