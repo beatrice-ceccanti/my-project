@@ -3,16 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Artikel — Technologie, Innovation, Medizin</title>
+  <title>Beatrice Ceccanti — Chemieingenieurin</title>
   <link rel="stylesheet" href="../style.css" />
 </head>
 <body>
-  <header class="topbar">
-    <a class="brand" href="./">Beatrice Ceccanti</a>
 
+  <header class="topbar">
+    <a class="brand" href="./">
+      <img src="../assets/logo.png" alt="BC Logo">
+    </a>
     <nav class="nav">
-      <a href="#about">Über mich</a>
-      <a href="#latest">Artikel</a>
+      
+      <a href="#about">Profil</a>
+      <a href="#latest">Publikationen</a>
       <a href="#contact">Kontakt</a>
     </nav>
 
@@ -25,68 +28,78 @@
   </header>
 
   <main>
+
+    <!-- HERO -->
     <section class="hero">
       <div class="heroCard">
-        <p class="badge">Chemieingenieurwesen • Innovation • Sprachen und internationales Mindset</p>
-        <h1>Chemieingenieur mit einer internationalen Einstellung.</h1>
-        <p class="subtitle">
-          Analytische Genauigkeit, prozessorientiertes Denken, Anpassungsfähigkeit in globalen Umfeldern.
-        </p>
+        <div class="heroText">
+          <p class="badge">
+            Chemieingenieurwesen • Innovation • Sprachen und internationale Perspektive
+          </p>
+  
+          <h1>Chemieingenieurin mit internationaler Perspektive.</h1>
+          
+          <p class="subtitle">
+            Analytische Präzision, Prozessdenken und Anpassungsfähigkeit in globalen Umfeldern.
+          </p> 
+        </div>
+        <div class="heroAvatar">
+          <img src="../assets/avatar-dark.png" alt="Porträt von Beatrice">
+        </div>
       </div>
     </section>
-
-    <section class="section" id="latest">
-      <div class="sectionHead">
-        <h2>Neueste Artikel</h2>
-        <p>Ausgewählte Beiträge und schriftliche Arbeiten.</p>
-      </div>
-
-      <div class="grid" id="articlesGrid"></div>
-    </section>
-
+    
+    <!-- ABOUT -->
     <section class="section" id="about">
       <div class="sectionHead">
-        <h2>Über mich</h2>
-        <p>Mein Profil.</p>
+        <h2>Profil</h2>
+        <p>Berufliches Profil.</p>
       </div>
 
       <div class="card">
         <p class="muted">
-          Hallo! Ich bin <strong>Beatrice Ceccanti</strong>. Ich bin Chemieingenieur und beschäftige mich gerne mit Innovation und internationalen Umfeldern. 
-          Meine Erfahrungen umfassen technische Analyse und eine mehrsprachige Perspektive, die es ermöglicht, mit verschiedenen Situationen umzugehen. 
+          Hallo, ich bin <strong>Beatrice Ceccanti</strong>. Ich bin Chemieingenieurin mit einem starken Interesse
+          an Innovation und internationalen Kontexten. Mein Hintergrund verbindet technische
+          Analyse, strukturiertes Problemlösen und eine mehrsprachige Perspektive, die es mir
+          ermöglicht, effektiv in unterschiedlichen Umgebungen zu arbeiten.
         </p>
       </div>
     </section>
 
-
-        <!-- CONTACT -->
+    <!-- PUBLICATIONS -->
+    <section class="section" id="latest">
+      <div class="sectionHead">
+        <div>
+          <h2>Publikationen</h2>
+          <p>Ausgewählte Artikel und schriftliche Arbeiten.</p>
+        </div>
+        <a class="btn" href="./articles/" style="margin-bottom: 16px;">Alle anzeigen</a>
+      </div>
+    
+      <div class="grid" id="articlesGrid"></div>
+    </section>
+    
+    <!-- CONTACT -->
     <section class="section" id="contact">
       <div class="sectionHead">
         <h2>Kontakt</h2>
-        <p>Für Kooperationen, Feedback oder Vorschläge.</p>
+        <p>Für berufliche Möglichkeiten oder Kooperationen.</p>
       </div>
 
       <div class="card">
-          <h3>E-Mail</h3>
-          <p><span class="muted">E-Mail:</span> <a class="link" href="mailto:beatrice.ceccanti@gmail.com">beatrice.ceccanti@gmail.com</a></p>
+        <p>
+          <strong>Email:</strong>
+          <a class="link" href="mailto:beatrice.ceccanti@gmail.com">beatrice.ceccanti@gmail.com</a>
+        </p>
       </div>
     </section>
+
   </main>
 
   <footer class="footer">
-    <p>© <span id="year"></span> Beatrice Ceccanti </p>
+    <p>© <span id="year"></span> Beatrice Ceccanti</p>
   </footer>
 
   <script src="../script.js"></script>
 </body>
-
 </html>
-
-
-
-
-
-
-
-
-
