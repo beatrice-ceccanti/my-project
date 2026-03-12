@@ -64,21 +64,41 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 /* =========================================
-   ARTICLES LOADER (GitHub Pages safe)
+   ARTICLES LOADER
 ========================================= */
 document.addEventListener("DOMContentLoaded", () => {
   const grid = document.getElementById("articlesGrid");
   if (!grid) return;
 
-  const SUPPORTED = ["en", "it", "de", "es"];
+  const SUPPORTED = ["en", "it", "de", "fr"];
   const parts = window.location.pathname.split("/").filter(Boolean);
   const lang = SUPPORTED.includes(parts[1]) ? parts[1] : "en";
 
   const I18N = {
-    it: { read: "Leggi →", noResults: "Nessun articolo trovato.", results: "risultati" },
-    en: { read: "Read →", noResults: "No articles found.", results: "results" },
-    de: { read: "Lesen →", noResults: "Keine Artikel gefunden.", results: "Ergebnisse" },
-    fr: { read: "Lire →", noResults: "Aucun article trouvé.", results: "résultats" }
+    it: {
+      read: "Leggi →",
+      noResults: "Nessun articolo trovato.",
+      results: "risultati",
+      error: "Errore nel caricamento degli articoli."
+    },
+    en: {
+      read: "Read →",
+      noResults: "No articles found.",
+      results: "results",
+      error: "Error loading articles."
+    },
+    de: {
+      read: "Lesen →",
+      noResults: "Keine Artikel gefunden.",
+      results: "Ergebnisse",
+      error: "Fehler beim Laden der Artikel."
+    },
+    fr: {
+      read: "Lire →",
+      noResults: "Aucun article trouvé.",
+      results: "résultats",
+      error: "Erreur lors du chargement des articles."
+    }
   };
 
   const t = I18N[lang] || I18N.en;
@@ -87,31 +107,45 @@ document.addEventListener("DOMContentLoaded", () => {
   const tagSelect = document.getElementById("tagSelect");
   const resultsHint = document.getElementById("resultsHint");
 
-  // JSON si trova sempre in /<lang>/articles/articles.json
-  fetch("articles/articles.json")
+  const isArchivePage = window.location.pathname.includes("/articles/");
+  const jsonPath = isArchivePage ? "./articles.json" : "./articles/articles.json";
+
+  fetch(jsonPath)
     .then(res => {
       if (!res.ok) throw new Error("Failed to load articles.json");
       return res.json();
     })
     .then(articles => {
+      const sortedArticles = [...articles].sort(
+        (a, b) => new Date(b.date) - new Date(a.date)
+      );
 
-      function render(filtered) {
+      function getArticleHref(article) {
+        if (article.slug) {
+          return isArchivePage ? `./${article.slug}` : `./articles/${article.slug}`;
+        }
+        if (article.url) {
+          return article.url;
+        }
+        return "";
+      }
+
+      function render(list) {
         grid.innerHTML = "";
 
-        if (!filtered.length) {
+        if (!list.length) {
           grid.innerHTML = `<p class="muted">${t.noResults}</p>`;
           if (resultsHint) resultsHint.textContent = `0 ${t.results}`;
           return;
         }
 
-        filtered.forEach(article => {
-
+        list.forEach(article => {
           const title = article.title || "";
           const excerpt = article.excerpt || "";
           const tags = Array.isArray(article.tags) ? article.tags : [];
-          const url = article.url || ""; // es: "articles/first-article.html"
+          const href = getArticleHref(article);
 
-          if (!url) return;
+          if (!href) return;
 
           const card = document.createElement("div");
           card.className = "card";
@@ -122,14 +156,14 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="tagsRow">
               ${tags.map(tag => `<span class="pill">${tag}</span>`).join(" ")}
             </div>
-            <a class="link" href="${url}">${t.read}</a>
+            <a class="link" href="${href}">${t.read}</a>
           `;
 
           grid.appendChild(card);
         });
 
         if (resultsHint) {
-          resultsHint.textContent = `${filtered.length} ${t.results}`;
+          resultsHint.textContent = `${list.length} ${t.results}`;
         }
       }
 
@@ -137,7 +171,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const query = (searchInput?.value || "").toLowerCase();
         const selectedTag = tagSelect?.value || "All";
 
-        const filtered = articles.filter(article => {
+        let filtered = sortedArticles.filter(article => {
           const title = (article.title || "").toLowerCase();
           const excerpt = (article.excerpt || "").toLowerCase();
           const tags = Array.isArray(article.tags) ? article.tags : [];
@@ -148,18 +182,24 @@ document.addEventListener("DOMContentLoaded", () => {
           return matchesQuery && matchesTag;
         });
 
+        if (!isArchivePage) {
+          filtered = filtered.slice(0, 3);
+        }
+
         render(filtered);
       }
 
       searchInput?.addEventListener("input", filter);
       tagSelect?.addEventListener("change", filter);
 
-      render(articles);
+      if (isArchivePage) {
+        render(sortedArticles);
+      } else {
+        render(sortedArticles.slice(0, 3));
+      }
     })
     .catch(err => {
       console.error("Errore caricamento articoli:", err);
-      grid.innerHTML = `<p class="muted">Error loading articles.</p>`;
+      grid.innerHTML = `<p class="muted">${t.error}</p>`;
     });
 });
-
-
