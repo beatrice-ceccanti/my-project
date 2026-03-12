@@ -4,7 +4,7 @@
     "date": "2026-02-23",
     "tags": ["Personnel"],
     "excerpt": "Un texte argumentatif sur la manière dont la technologie transforme notre façon d’apprendre et de travailler.",
-    "url": "articles/first-article.html",
+    "slug": "./first-article.html",
     "minutes": 5
   },
   {
@@ -12,8 +12,9 @@
     "date": "2026-02-20",
     "tags": ["Personnel"],
     "excerpt": "Ce que l’innovation peut réellement accomplir dans le domaine de la santé et pourquoi la prudence et la méthode sont essentielles.",
-    "url": "articles/medicine-innovation.html",
+    "slug": "./medicine-innovation.html",
     "minutes": 7
   }
 ]
+
 
