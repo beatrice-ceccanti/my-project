@@ -530,7 +530,7 @@ h1,h2,h3{ letter-spacing:.2px; }
 
 .card.is-hover::before, .card.is-hover::after,
 .heroCard.is-hover::before, .heroCard.is-hover::after{
-  opacity:1;
+  opacity:0;
 }
 
 /* tilt (JS imposta --rx/--ry e class .tilt/.is-hover) */
@@ -649,6 +649,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
   h1{ font-size: 1.7rem; line-height: 1.15; }
   .subtitle{ font-size: 1rem; }
 }
+
 
 
 
