@@ -9,10 +9,12 @@
 <body>
 
   <header class="topbar">
-    <a class="brand" href="./">Beatrice Ceccanti</a>
-
+    <a class="brand" href="./">
+      <img src="../assets/logo.png" alt="BC Logo">
+    </a>
     <nav class="nav">
-      <a href="#about">À propos</a>
+      
+      <a href="#about">Profil</a>
       <a href="#latest">Publications</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -30,46 +32,53 @@
     <!-- HERO -->
     <section class="hero">
       <div class="heroCard">
-
-        <p class="badge">
-          Génie chimique • Innovation • Langues & ouverture internationale
-        </p>
-
-        <h1>Ingénieure chimiste avec une perspective internationale.</h1>
-
-        <p class="subtitle">
-          Rigueur analytique, pensée orientée processus et capacité d’adaptation dans des environnements globaux.
-        </p>
+        <div class="heroText">
+          <p class="badge">
+            Génie chimique • Innovation • Langues et perspective internationale
+          </p>
+  
+          <h1>Ingénieure chimiste avec une perspective internationale.</h1>
+          
+          <p class="subtitle">
+            Rigueur analytique, vision des processus et capacité d’adaptation dans des environnements internationaux.
+          </p> 
+        </div>
+        <div class="heroAvatar">
+          <img src="../assets/avatar-dark.png" alt="Portrait de Beatrice">
+        </div>
       </div>
     </section>
-
+    
     <!-- ABOUT -->
     <section class="section" id="about">
       <div class="sectionHead">
-        <h2>À propos</h2>
+        <h2>Profil</h2>
         <p>Profil professionnel.</p>
       </div>
 
       <div class="card">
         <p class="muted">
           Bonjour, je suis <strong>Beatrice Ceccanti</strong>. Je suis ingénieure chimiste avec un fort intérêt
-          pour l’innovation et les contextes internationaux. Mon parcours combine analyse technique,
-          résolution structurée de problèmes et perspective multilingue, ce qui me permet d’évoluer
-          efficacement dans différents environnements.
+          pour l’innovation et les contextes internationaux. Mon parcours combine analyse
+          technique, résolution structurée de problèmes et une perspective multilingue
+          qui me permet d’évoluer efficacement dans différents environnements.
         </p>
       </div>
     </section>
-    
+
     <!-- PUBLICATIONS -->
     <section class="section" id="latest">
       <div class="sectionHead">
-        <h2>Publications</h2>
-        <p>Articles sélectionnés et travaux écrits.</p>
+        <div>
+          <h2>Publications</h2>
+          <p>Articles sélectionnés et travaux écrits.</p>
+        </div>
+        <a class="btn" href="./articles/" style="margin-bottom: 16px;">Voir tout</a>
       </div>
-
+    
       <div class="grid" id="articlesGrid"></div>
     </section>
-
+    
     <!-- CONTACT -->
     <section class="section" id="contact">
       <div class="sectionHead">
