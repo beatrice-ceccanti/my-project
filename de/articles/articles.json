@@ -4,7 +4,7 @@
     "date": "2026-02-23",
     "tags": ["Persönliches"],
     "excerpt": "Ein argumentativer Text darüber, wie Technologie unsere Art zu lernen und zu arbeiten verändert.",
-    "url": "articles/first-article.html",
+    "slug": "./first-article.html",
     "minutes": 5
   },
   {
@@ -12,8 +12,9 @@
     "date": "2026-02-20",
     "tags": ["Persönliches"],
     "excerpt": "Was Innovation im Gesundheitswesen wirklich leisten kann – und wo Vorsicht und Methode entscheidend sind.",
-    "url": "articles/medicine-innovation.html",
+    "slug": "./medicine-innovation.html",
     "minutes": 7
   }
 ]
+
 
