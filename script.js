@@ -124,9 +124,11 @@ document.addEventListener("DOMContentLoaded", () => {
         if (article.slug) {
           return isArchivePage ? `./${article.slug}` : `./articles/${article.slug}`;
         }
+      
         if (article.url) {
           return article.url;
         }
+      
         return "";
       }
 
@@ -203,3 +205,4 @@ document.addEventListener("DOMContentLoaded", () => {
       grid.innerHTML = `<p class="muted">${t.error}</p>`;
     });
 });
+
